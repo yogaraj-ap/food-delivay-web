@@ -1,0 +1,134 @@
+/* ===== FULL SCREEN WEB VIEW ===== */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.welcome-container {
+  width: 100vw;
+  height: 100vh;              /* 🔥 FULL SCREEN */
+  overflow: hidden;
+
+  /* FULL BACKGROUND IMAGE */
+  background-image: url("../assets/backgroubd.png");
+  background-repeat: no-repeat;
+  background-size: cover;     /* cover entire laptop screen */
+  background-position: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;    /* center vertically */
+  align-items: center;        /* center horizontally */
+  text-align: center;
+
+  font-family: "Segoe UI", sans-serif;
+
+  position: relative;
+}
+
+/* ===== GRADIENT OVERLAY ===== */
+.welcome-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.35),
+    rgba(0, 0, 0, 0.75)
+  );
+
+  z-index: 0;
+}
+
+/* ===== CONTENT LAYER ===== */
+.welcome-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== LOGO ===== */
+.welcome-logo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 4px solid white;
+  background: white;
+  object-fit: cover;
+  margin-bottom: 24px;
+
+  animation: slideDown 0.9s ease;
+}
+
+/* ===== TITLE ===== */
+.welcome-title {
+  font-size: 42px;        /* laptop-friendly size */
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 36px;
+
+  animation: fadeUp 1s ease;
+}
+
+/* ===== BUTTONS ===== */
+.welcome-buttons {
+  display: flex;
+  gap: 24px;
+  animation: fadeUp 1.2s ease;
+}
+
+.welcome-btn {
+  padding: 14px 40px;
+  border-radius: 30px;
+  border: none;
+
+  font-size: 17px;
+  font-weight: 600;
+
+  cursor: pointer;
+  background: #ffffff;
+  color: #ff6f3c;
+
+  transition: all 0.3s ease;
+}
+
+.welcome-btn:hover {
+  background: #ffe0d2;
+  transform: translateY(-3px);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.owner-link {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #ff6f00;
+  cursor: pointer;
+}
+
+.owner-link span:hover {
+  text-decoration: underline;
+}

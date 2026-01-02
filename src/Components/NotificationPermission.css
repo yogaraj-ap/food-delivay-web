@@ -1,0 +1,100 @@
+/* ===== FULL SCREEN PAGE ===== */
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+/* ===== PAGE ===== */
+.notification-page {
+  width: 100vw;
+  height: 100vh;
+
+  /* 🔥 FULL BACKGROUND IMAGE */
+  background-image: url("../assets/location.png");
+  background-repeat: no-repeat;
+  background-size: cover;          /* FULL PAGE */
+  background-position: center;
+
+  font-family: "Segoe UI", sans-serif;
+
+  position: relative;
+}
+
+/* ===== BOTTOM CENTER POPUP ===== */
+.notification-popup {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 100%;
+  max-width: 420px;
+
+  background: #ffffff;
+  padding: 22px 24px 26px;
+  text-align: center;
+
+  border-radius: 18px;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.25);
+
+  animation: slideUp 0.35s ease;
+}
+
+/* ===== CONTENT ===== */
+.notification-content {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+/* ===== TEXT ===== */
+.notification-popup p {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 16px;
+}
+
+/* ===== ICON ===== */
+.notification-image {
+  font-size: 78px;
+  margin-bottom: 18px;
+}
+
+/* ===== PRIMARY BUTTON ===== */
+.notify-btn {
+  width: 100%;
+  padding: 14px;
+  background: #ff6f00;
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.notify-btn:hover {
+  background: #ff8126;
+}
+
+/* ===== SECONDARY BUTTON ===== */
+.not-now {
+  margin-top: 12px;
+  background: none;
+  border: none;
+  color: #777;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes slideUp {
+  from {
+    transform: translate(-50%, 100%);
+  }
+  to {
+    transform: translate(-50%, 0);
+  }
+}

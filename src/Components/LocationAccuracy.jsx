@@ -1,0 +1,162 @@
+// import React from "react";
+// import "./LocationAccuracy.css";
+// import { toast } from "react-toastify";
+// import { saveLocationPermission } from "../Service/Api";
+
+// function LocationAccuracy({ setPage }) {
+
+//   const allowAccuracy = () => {
+//     if (!navigator.geolocation) {
+//       toast.error("Location not supported");
+//       return;
+//     }
+
+//     navigator.geolocation.getCurrentPosition(
+//       async () => {
+//         // ✅ ONLY SEND WHAT BACKEND EXPECTS
+//         await saveLocationPermission({
+//           permission: "GRANTED",
+//         });
+
+//         toast.success("Location enabled 📍");
+
+//         // ✅ FIRST GO TO LOCATION PAGE
+//         setTimeout(() => {
+//           setPage("location");
+//         }, 800);
+//       },
+//       async () => {
+//         await saveLocationPermission({
+//           permission: "DENIED",
+//         });
+
+//         toast.error("Location permission denied");
+
+//         // ✅ DENIED → NOTIFICATION
+//         setTimeout(() => {
+//           setPage("notification");
+//         }, 800);
+//       },
+//       {
+//         enableHighAccuracy: true,
+//         timeout: 10000,
+//       }
+//     );
+//   };
+
+//   const skip = async () => {
+//     await saveLocationPermission({
+//       permission: "SKIPPED",
+//     });
+
+//     toast.info("Limited experience enabled");
+
+//     // ✅ SKIP → NOTIFICATION
+//     setTimeout(() => {
+//       setPage("notification");
+//     }, 800);
+//   };
+
+//   return (
+//     <div className="accuracy-page">
+//       <div className="accuracy-card">
+//         <h3>For a better experience, your device will need to use</h3>
+//         <h2>Location Accuracy</h2>
+
+//         <div className="accuracy-info">
+//           <h5>📍 Device location</h5>
+//           <h5>🎯 Precise location accuracy</h5>
+//         </div>
+
+//         <div className="accuracy-actions">
+//           <button className="secondary" onClick={skip}>
+//             No, thanks
+//           </button>
+//           <button className="primary" onClick={allowAccuracy}>
+//             Turn on
+//           </button>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default LocationAccuracy;
+
+import React from "react";
+import "./LocationAccuracy.css";
+import { toast } from "react-toastify";
+import { saveLocationPermission } from "../Service/Api";
+
+function LocationAccuracy({ setPage }) {
+
+  const allowAccuracy = () => {
+  console.log("📍 Requesting location permission...");
+
+  navigator.geolocation.getCurrentPosition(
+    async (pos) => {
+      console.log("✅ Location success", pos.coords);
+
+      await saveLocationPermission({
+        permission: "GRANTED",
+        latitude: pos.coords.latitude,
+        longitude: pos.coords.longitude,
+      });
+
+      toast.success("Location enabled 📍");
+
+      // ✅ ALWAYS MOVE FORWARD
+      setTimeout(() => setPage("location"), 1000);
+    },
+    async (error) => {
+      console.error("❌ Location error:", error);
+
+      // 🔥 IMPORTANT: Timeout should NOT block app
+      if (error.code === 3) {
+        toast.warning("Using approximate location");
+        setTimeout(() => setPage("location"), 1000);
+        return;
+      }
+
+      await saveLocationPermission({ permission: "DENIED" });
+      toast.error("Location permission denied");
+      setTimeout(() => setPage("notification"), 1000);
+    },
+    {
+      enableHighAccuracy: false, // 🔴 MUST BE FALSE
+      timeout: 30000,            // 30 seconds
+      maximumAge: 60000,         // allow cached location
+    }
+  );
+};
+
+  const skip = async () => {
+    await saveLocationPermission({ permission: "SKIPPED" });
+    toast.info("Location skipped");
+
+    setTimeout(() => setPage("notification"), 1000);
+  };
+
+  return (
+    <div className="accuracy-page">
+      <div className="accuracy-card">
+        <h3>Enable precise location</h3>
+        <h2>Location Accuracy</h2>
+
+        <p>📍 Device location</p>
+        <p>🎯 Accurate delivery tracking</p>
+
+        <div className="accuracy-actions">
+          <button className="secondary" onClick={skip}>
+            No, thanks
+          </button>
+          <button className="primary" onClick={allowAccuracy}>
+            Turn on
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default LocationAccuracy;

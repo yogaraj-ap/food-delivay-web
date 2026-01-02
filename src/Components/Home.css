@@ -1,0 +1,258 @@
+/* ===== PAGE ===== */
+.home-page {
+  padding: 14px;
+  background: #f7f7f7;
+  min-height: 100vh;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* ===== HEADER ===== */
+.home-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+/* ===== HORIZONTAL FOOD SCROLL (TOP ROW) ===== */
+.food-scroll-row {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding: 10px 4px 20px;
+  scroll-behavior: smooth;
+  white-space: nowrap;
+}
+
+/* Hide scrollbar (Chrome, Edge, Safari) */
+.food-scroll-row::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar (Firefox) */
+.food-scroll-row {
+  scrollbar-width: none;
+}
+
+/* Force cards to stay in one row */
+.food-scroll-row .food-card {
+  min-width: 180px;
+  flex-shrink: 0;
+}
+
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.refresh-location {
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  cursor: pointer;
+  color: #ff6f00;
+}
+
+.refresh-location:hover {
+  transform: rotate(90deg);
+  transition: 0.3s;
+}
+
+
+.profile {
+  width: 38px;
+  height: 38px;
+  background: #ff6f00;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* ===== SEARCH BAR ===== */
+.search-box {
+  margin: 12px 0;
+}
+
+.search-box input {
+  width: 100%;
+  max-width: 500px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  outline: none;
+  font-size: 14px;
+  background: #fff;
+}
+
+/* ===== OFFERS SECTION ===== */
+.offers-section {
+  margin: 18px 0;
+}
+
+.offers-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* Horizontal scroll */
+.offers-scroll {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.offers-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Offer card */
+.offer-card {
+  min-width: 160px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}
+
+.offer-card img {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+}
+
+.offer-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #ff5722;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 6px;
+  border-radius: 6px;
+}
+
+.offer-name {
+  padding: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ===== SECTION TITLE ===== */
+.section-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 16px 4px 8px;
+}
+
+
+
+/* .food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 14px;
+} */
+
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 14px;
+  margin-top: 10px;
+}
+
+
+.cart-fab {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #00c853;
+  color: #fff;
+  border: none;
+  padding: 14px 18px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 700;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cart-fab span {
+  background: #fff;
+  color: #00c853;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+
+
+@media (min-width: 768px) {
+  .home-page {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px 24px;
+  }
+
+  .location {
+    font-size: 16px;
+  }
+
+  .profile {
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+  }
+
+  .search-box {
+    display: flex;
+    justify-content: center;
+  }
+
+  .search-box input {
+    font-size: 15px;
+    padding: 14px 18px;
+  }
+
+  .offers-scroll {
+    gap: 18px;
+  }
+
+  .offer-card {
+    min-width: 220px;
+  }
+
+  .offer-card img {
+    height: 140px;
+  }
+
+  .section-title {
+    font-size: 18px;
+  }
+
+  .food-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 18px;
+  }
+
+  .cart-fab {
+    bottom: 30px;
+    right: 30px;
+    padding: 16px 22px;
+    font-size: 17px;
+  }
+}

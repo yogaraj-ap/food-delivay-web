@@ -1,0 +1,290 @@
+/* ================= PAGE ================= */
+.owner-dashboard {
+  padding: 24px;
+  max-width: 1000px;
+  margin: auto;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* ================= OWNER PROFILE ================= */
+.owner-profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  padding: 18px 22px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 25px;
+}
+
+.owner-avatar {
+  font-size: 48px;
+  background: #fff3e0;
+  padding: 14px;
+  border-radius: 50%;
+}
+
+.owner-info {
+  flex: 1;
+  margin-left: 16px;
+}
+
+.owner-info h3 {
+  margin: 0;
+  font-size: 20px;
+  color: #333;
+}
+
+.owner-info p {
+  margin: 4px 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.role-badge {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 20px;
+  background: #ff5722;
+  color: white;
+}
+
+/* ================= PROFILE ACTIONS ================= */
+.owner-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-btn {
+  background: #2196f3;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.edit-btn:hover {
+  background: #1976d2;
+}
+
+.logout-btn {
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.logout-btn:hover {
+  background: #d32f2f;
+}
+
+/* ================= FOOD FORM ================= */
+.food-form {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+.food-form input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 15px;
+}
+
+.food-form input:focus {
+  outline: none;
+  border-color: #ff5722;
+}
+
+.food-form button {
+  grid-column: span 2;
+  padding: 14px;
+  background: #ff5722;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.food-form button:hover {
+  background: #e64a19;
+}
+
+/* ================= ORDERS ================= */
+.order-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.order-card p {
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+.order-actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+}
+
+.order-actions button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.accept {
+  background: #4caf50;
+  color: white;
+}
+
+.reject {
+  background: #f44336;
+  color: white;
+}
+
+.delivered {
+  background: #2196f3;
+  color: white;
+}
+
+/* ================= FOOD LIST ================= */
+.food-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.food-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  text-align: center;
+}
+
+.food-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.food-card h4 {
+  margin: 6px 0;
+  color: #333;
+}
+
+.food-card p {
+  margin: 2px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.food-card button {
+  margin-top: 8px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  background: #f44336;
+  color: white;
+  cursor: pointer;
+}
+
+.food-card button:hover {
+  background: #d32f2f;
+}
+
+/* ================= MODAL (EDIT PROFILE / SETTINGS) ================= */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #fff;
+  width: 90%;
+  max-width: 420px;
+  padding: 22px;
+  border-radius: 16px;
+}
+
+.modal h3 {
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.modal input {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.modal-actions button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.save-btn {
+  background: #4caf50;
+  color: white;
+}
+
+.cancel-btn {
+  background: #9e9e9e;
+  color: white;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 600px) {
+  .owner-profile {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .food-form {
+    grid-template-columns: 1fr;
+  }
+
+  .food-form button {
+    grid-column: span 1;
+  }
+}

@@ -1,0 +1,48 @@
+.order-card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.order-card h4 {
+  margin-bottom: 8px;
+}
+
+.order-items {
+  margin-top: 10px;
+}
+
+.order-item {
+  font-size: 14px;
+  color: #444;
+}
+
+.order-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.order-actions button {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.order-actions button:nth-child(1) {
+  background: #4caf50;
+  color: white;
+}
+
+.order-actions button:nth-child(2) {
+  background: #f44336;
+  color: white;
+}
+
+.order-actions button:nth-child(3) {
+  background: #2196f3;
+  color: white;
+}

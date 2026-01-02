@@ -1,0 +1,41 @@
+.order-tracking-page {
+  padding: 20px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.order-tracking-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-status {
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.status-NEW {
+  color: orange;
+}
+
+.status-ACCEPTED {
+  color: blue;
+}
+
+.status-DELIVERED {
+  color: green;
+}
+
+.track-back-btn {
+  margin-top: 20px;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  background: #ff6f00;
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}

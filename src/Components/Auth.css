@@ -1,0 +1,117 @@
+/* ===== BASE (DESKTOP ONLY) ===== */
+.auth-container {
+  min-height: 100vh;
+
+  /* Background image */
+  background-image: url("../assets/login.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  justify-content: flex-end;     /* card on right side */
+  align-items: center;
+
+  font-family: "Segoe UI", sans-serif;
+  padding-right: 120px;
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* ===== GRADIENT OVERLAY ===== */
+.auth-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.85),
+    rgba(255, 255, 255, 0.65)
+  );
+  z-index: 0;
+}
+
+/* ===== CARD ===== */
+.auth-box {
+  background: #ffffff;
+  width: 420px;
+  padding: 30px;
+
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+  text-align: center;
+
+  position: relative;
+  z-index: 1;
+
+  animation: fadeUp 0.9s ease;
+}
+
+/* ===== TITLE ===== */
+.auth-box h2 {
+  margin-bottom: 25px;
+  color: #ff6f3c;
+  font-size: 26px;
+}
+
+/* ===== INPUT ===== */
+.auth-input {
+  width: 70%;
+  padding: 12px;
+  margin-bottom: 22px;
+
+  border-radius: 30px;
+  border: 1px solid #c59f0b;
+  font-size: 14px;
+  outline: none;
+}
+
+/* ===== BUTTON ===== */
+.auth-btn {
+  width: 45%;
+  padding: 12px;
+
+  border: none;
+  border-radius: 22px;
+  background-color: #ff6f3c;
+  color: white;
+
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+.auth-btn:hover {
+  background-color: #ff814f;
+  transform: translateY(-2px);
+}
+
+/* ===== LINKS ===== */
+.auth-links {
+  margin-top: 18px;
+  font-size: 14px;
+}
+
+.auth-links span {
+  color: #ff6f3c;
+  cursor: pointer;
+  display: block;
+  margin-top: 8px;
+}
+
+/* ================================================= */
+/* ================= ANIMATION ==================== */
+/* ================================================= */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
