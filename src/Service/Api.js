@@ -83,8 +83,10 @@
 
 import axios from "axios";
 
+/* ================= AXIOS INSTANCE ================= */
 const API = axios.create({
   baseURL: "http://localhost:8080/api",
+  timeout: 15000, // ✅ prevents silent failures on uploads
 });
 
 /* ================= AUTH ================= */
@@ -114,7 +116,7 @@ export const forgotPassword = (data) =>
 export const saveLocationPermission = (data) =>
   API.post("/location/permission", data);
 
-// ✅ SAVE / UPDATE LIVE LOCATION (MATCHES BACKEND)
+// SAVE / UPDATE LIVE LOCATION
 export const updateLiveLocation = ({ email, lat, lng, address }) =>
   API.post("/location/update", {
     email,
@@ -123,11 +125,11 @@ export const updateLiveLocation = ({ email, lat, lng, address }) =>
     address,
   });
 
-// ✅ GET USER SAVED LOCATION (FIXED URL)
+// GET USER SAVED LOCATION
 export const getUserLocation = (email) =>
   API.get(`/location/${email}`);
 
-// ✅ BACKEND REVERSE GEOCODING (CORS SAFE)
+// BACKEND REVERSE GEOCODING
 export const reverseGeocode = (lat, lon) =>
   API.get(`/location/reverse?lat=${lat}&lon=${lon}`);
 
@@ -154,32 +156,28 @@ export const getOrdersByEmail = (email) =>
 export const getOrdersForOwner = (email) =>
   API.get(`/orders/owner/${email}`);
 
-// ✅ OWNER → GET LIVE ORDERS
+// OWNER → GET LIVE ORDERS
 export const getNewOwnerOrders = (ownerEmail) =>
   API.get("/orders/owner/orders", {
-    params: {
-      ownerEmail: ownerEmail,
-    },
+    params: { ownerEmail },
   });
 
-
-
-// UPDATE ORDER STATUS
+// ✅ UPDATE ORDER STATUS (FIXED)
 export const updateOrderStatus = (orderId, status) =>
-  API.put(`/orders/${orderId}/status`, { status });
+  API.put(`/orders/${orderId}/status?status=${status}`);
 
 // SINGLE ORDER
 export const getOrderById = (orderId) =>
   API.get(`/orders/${orderId}`);
 
-// UPDATE ORDER LOCATION (DELIVERY TRACKING)
+// UPDATE ORDER LOCATION
 export const updateOrderLocation = (orderId, lat, lng) =>
   API.put(`/orders/${orderId}/location`, { lat, lng });
 
 /* ================= FOODS ================= */
 
-export const addFood = (food) =>
-  API.post("/foods", food);
+export const addFood = (foodFormData) =>
+  API.post("/foods", foodFormData);
 
 export const getAllFoods = () =>
   API.get("/foods");
@@ -187,19 +185,33 @@ export const getAllFoods = () =>
 export const getOwnerFoods = (email) =>
   API.get(`/foods/owner/${email}`);
 
+
+export const getFoodsByRestaurant = (restaurantName) =>
+  API.get(`/foods/restaurant/${restaurantName}`);
+
 export const updateFood = (id, food) =>
   API.put(`/foods/${id}`, food);
 
 export const deleteFood = (id) =>
   API.delete(`/foods/${id}`);
 
-/* ===== ADDRESSES ===== */
+
+/* ================= ADDRESSES ================= */
 
 export const saveAddress = (data) =>
   API.post("/addresses", data);
 
 export const getAddresses = (email) =>
   API.get(`/addresses/${email}`);
+/* ================= RESTAURANT ================= */
 
+export const saveRestaurant = (formData) =>
+  API.post("/restaurant/save", formData);
+
+export const getAllRestaurants = () =>
+  API.get("/restaurant/all");
+
+export const getRestaurantByOwner = (email) =>
+  API.get(`/restaurant/owner/${email}`);
 
 export default API;

@@ -1,4 +1,4 @@
-/* ===== FULL SCREEN WEB VIEW ===== */
+/* 
 html,
 body {
   width: 100%;
@@ -8,19 +8,18 @@ body {
 
 .welcome-container {
   width: 100vw;
-  height: 100vh;              /* 🔥 FULL SCREEN */
+  height: 100vh;              
   overflow: hidden;
 
-  /* FULL BACKGROUND IMAGE */
   background-image: url("../assets/backgroubd.png");
   background-repeat: no-repeat;
-  background-size: cover;     /* cover entire laptop screen */
+  background-size: cover;    
   background-position: center;
 
   display: flex;
   flex-direction: column;
-  justify-content: center;    /* center vertically */
-  align-items: center;        /* center horizontally */
+  justify-content: center;    
+  align-items: center;        
   text-align: center;
 
   font-family: "Segoe UI", sans-serif;
@@ -28,7 +27,6 @@ body {
   position: relative;
 }
 
-/* ===== GRADIENT OVERLAY ===== */
 .welcome-container::before {
   content: "";
   position: absolute;
@@ -43,13 +41,11 @@ body {
   z-index: 0;
 }
 
-/* ===== CONTENT LAYER ===== */
 .welcome-container > * {
   position: relative;
   z-index: 1;
 }
 
-/* ===== LOGO ===== */
 .welcome-logo {
   width: 140px;
   height: 140px;
@@ -62,9 +58,8 @@ body {
   animation: slideDown 0.9s ease;
 }
 
-/* ===== TITLE ===== */
 .welcome-title {
-  font-size: 42px;        /* laptop-friendly size */
+  font-size: 42px;        
   font-weight: 700;
   color: #ffffff;
   margin-bottom: 36px;
@@ -72,7 +67,7 @@ body {
   animation: fadeUp 1s ease;
 }
 
-/* ===== BUTTONS ===== */
+
 .welcome-buttons {
   display: flex;
   gap: 24px;
@@ -99,7 +94,7 @@ body {
   transform: translateY(-3px);
 }
 
-/* ===== ANIMATIONS ===== */
+
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -131,4 +126,153 @@ body {
 
 .owner-link span:hover {
   text-decoration: underline;
+} */
+
+
+/* RESET */
+html,
+body {
+  width: 100%;
+  height: 100%;
+
+}
+
+/* ================= MAIN CONTAINER ================= */
+.welcome-container {
+  position: fixed;
+  inset: 0;                 /* top:0 right:0 bottom:0 left:0 */
+  width: 100%;
+  height: 100%;
+
+  background-image: url("../assets/backgroubd.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: "Segoe UI", system-ui, sans-serif;
+  z-index: 9999;
+}
+
+
+
+/* DARK OVERLAY */
+.welcome-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.45),
+    rgba(0, 0, 0, 0.75)
+  );
+  z-index: 0;
+}
+
+/* ================= CARD ================= */
+.welcome-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+.welcome-card {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(6px);
+  border-radius: 18px;
+  padding: 36px 28px;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.25);
+}
+
+/* ================= LOGO ================= */
+.welcome-logo {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  margin-bottom: 18px;
+}
+
+/* ================= TEXT ================= */
+.welcome-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+.welcome-subtitle {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 26px;
+}
+
+/* ================= BUTTONS ================= */
+.welcome-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.welcome-btn {
+  padding: 13px;
+  border-radius: 999px;
+  border: none;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+
+  background: linear-gradient(90deg, #ff6f3c, #ff8c42);
+  color: #ffffff;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.welcome-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(255, 111, 60, 0.35);
+}
+
+/* ================= OWNER SECTION ================= */
+.owner-section {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.owner-text {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 10px;
+}
+
+.owner-btn {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  background: #111827;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 480px) {
+  .welcome-card {
+    padding: 26px 20px;
+  }
+
+  .welcome-title {
+    font-size: 22px;
+  }
+
+  .welcome-logo {
+    width: 90px;
+    height: 90px;
+  }
 }

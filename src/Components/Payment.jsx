@@ -87,7 +87,6 @@
 
 // export default Payment;
 
-
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { clearCart } from "../redux/cartSlice";
@@ -96,24 +95,27 @@ import "./Payment.css";
 
 function Payment({ setPage }) {
   const dispatch = useDispatch();
-  const [method, setMethod] = useState("");
 
-  const payNow = () => {
-    if (!method) {
-      toast.error("Please select a payment method ❗");
-      return;
+  // ✅ PAYMENT METHOD STATE
+  const [method, setMethod] = useState("COD");
+
+  const confirmPayment = () => {
+    // ✅ SAVE METHOD (OPTIONAL – FOR ORDER SUCCESS / HISTORY)
+    localStorage.setItem("paymentMethod", method);
+
+    if (method === "COD") {
+      toast.success("Order confirmed – Pay on Delivery 🚚");
+    } else if (method === "UPI") {
+      toast.success("UPI Payment Successful 💳");
     }
 
-    // ✅ MOCK PAYMENT SUCCESS
-    toast.success(`Payment Successful using ${method} 💳`);
-
-    // ✅ Clear cart AFTER payment success
+    // ✅ CLEAR CART
     dispatch(clearCart());
 
-    // ✅ Go to order success page
+    // ✅ REDIRECT
     setTimeout(() => {
       setPage("order-success");
-    }, 1000);
+    }, 1200);
   };
 
   return (
@@ -126,27 +128,31 @@ function Payment({ setPage }) {
           className={method === "UPI" ? "active" : ""}
           onClick={() => setMethod("UPI")}
         >
-          UPI
-        </button>
-
-        <button
-          className={method === "CARD" ? "active" : ""}
-          onClick={() => setMethod("CARD")}
-        >
-          Credit / Debit Card
+          💳 UPI
         </button>
 
         <button
           className={method === "COD" ? "active" : ""}
           onClick={() => setMethod("COD")}
         >
-          Cash on Delivery
+          🚚 Cash on Delivery
         </button>
       </div>
 
-      {/* ===== PAY BUTTON ===== */}
-      <button className="pay-btn" onClick={payNow}>
-        Pay Now
+      {/* ===== INFO TEXT ===== */}
+      {method === "COD" ? (
+        <p className="payment-info">
+          Pay cash when your food arrives
+        </p>
+      ) : (
+        <p className="payment-info">
+          Secure UPI payment
+        </p>
+      )}
+
+      {/* ===== CONFIRM BUTTON ===== */}
+      <button className="pay-btn" onClick={confirmPayment}>
+        {method === "COD" ? "Confirm Order" : "Pay Now"}
       </button>
 
       {/* ===== BACK ===== */}

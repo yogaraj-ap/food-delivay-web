@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart } from "../redux/cartSlice";
 import { placeOrder } from "../Service/Api";
@@ -8,6 +8,9 @@ import "./Cart.css";
 function Cart({ setPage }) {
   const cart = useSelector((state) => state.cart || []);
   const dispatch = useDispatch();
+
+  /* ✅ PAYMENT METHOD */
+  const [paymentMethod, setPaymentMethod] = useState("COD");
 
   /* ================= ADDRESS ================= */
   const savedAddress = JSON.parse(
@@ -35,7 +38,6 @@ function Cart({ setPage }) {
         return;
       }
 
-      // ✅ ADDRESS REQUIRED
       if (!deliveryAddress) {
         toast.error("Please add delivery address");
         setPage("address");
@@ -55,9 +57,9 @@ function Cart({ setPage }) {
       const payload = {
         email: userEmail,
         ownerEmail,
-        paymentMethod: "UPI",
+        paymentMethod: paymentMethod, // ✅ FIXED
         totalAmount: grandTotal,
-        deliveryAddress, // ✅ FIXED
+        deliveryAddress,
         items: cart.map((item) => ({
           foodName: item.name,
           restaurant: item.restaurant,
@@ -82,14 +84,18 @@ function Cart({ setPage }) {
 
   return (
     <div className="cart-page">
-      <div className="cart-header">Your Cart</div>
+      <div className="cart-header">
+        <button className="back-btn" onClick={() => setPage("home")}>
+          ← Back
+        </button>
+        <h3>Your Cart</h3>
+      </div>
 
       {/* ===== DELIVERY ADDRESS ===== */}
       <div className="delivery-address">
         <strong>Deliver to:</strong>
-        <p>
-          {deliveryAddress || "No address selected"}
-        </p>
+        <p>{deliveryAddress || "No address selected"}</p>
+
         {!deliveryAddress && (
           <button
             className="add-address-btn"
@@ -142,6 +148,29 @@ function Cart({ setPage }) {
           <span>Grand Total</span>
           <span>₹{grandTotal}</span>
         </div>
+      </div>
+
+      {/* ===== PAYMENT METHOD ===== */}
+      <div className="payment-options">
+        <h4>Select Payment Method</h4>
+
+        <label>
+          <input
+            type="radio"
+            checked={paymentMethod === "COD"}
+            onChange={() => setPaymentMethod("COD")}
+          />
+          Cash on Delivery
+        </label>
+
+        <label>
+          <input
+            type="radio"
+            checked={paymentMethod === "UPI"}
+            onChange={() => setPaymentMethod("UPI")}
+          />
+          UPI
+        </label>
       </div>
 
       {/* ===== CHECKOUT ===== */}

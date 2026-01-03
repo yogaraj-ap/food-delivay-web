@@ -1,4 +1,4 @@
-.order-success {
+/* .order-success {
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -9,14 +9,13 @@
   padding: 20px;
 }
 
-/* Success icon */
 .success-icon {
   font-size: 60px;
   margin-bottom: 20px;
   animation: pop 0.4s ease-out;
 }
 
-/* Home button */
+
 .home-btn {
   margin-top: 20px;
   padding: 12px 25px;
@@ -33,7 +32,6 @@
   background: #e64a19;
 }
 
-/* Subtle animation */
 @keyframes pop {
   from {
     transform: scale(0.8);
@@ -45,9 +43,7 @@
   }
 }
 
-/* ========================= */
-/* ===== DESKTOP VIEW ===== */
-/* ========================= */
+
 
 @media (min-width: 768px) {
   .order-success {
@@ -67,4 +63,53 @@
     padding: 14px 32px;
     border-radius: 12px;
   }
+} */
+
+
+.order-success-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f7f7f7;
+}
+
+.success-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.payment-summary {
+  margin: 16px 0;
+  font-size: 16px;
+}
+
+.badge {
+  margin-left: 8px;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.badge.cod {
+  background: #ff9800;
+}
+
+.badge.upi {
+  background: #4caf50;
+}
+
+.home-btn {
+  margin-top: 16px;
+  padding: 12px 18px;
+  background: #ff5722;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
 }

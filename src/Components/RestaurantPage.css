@@ -1,0 +1,80 @@
+.restaurant-page {
+  min-height: 100vh;
+  background: #f7f7f7;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* ===== BANNER ===== */
+.restaurant-banner {
+  height: 240px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.restaurant-card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+
+.back-btn {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* ===== INFO CARD ===== */
+.restaurant-info {
+  background: #fff;
+  margin-top: -20px;
+  border-radius: 20px 20px 0 0;
+  padding: 16px;
+}
+
+.restaurant-name {
+  font-size: 22px;
+  font-weight: 800;
+  color: #222;
+}
+
+.restaurant-meta {
+  font-size: 14px;
+  color: #666;
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.restaurant-address {
+  font-size: 14px;
+  color: #555;
+  margin-top: 8px;
+}
+
+/* ===== FOOD GRID ===== */
+.restaurant-foods {
+  padding: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 14px;
+}
+
+/* ===== DESKTOP ===== */
+@media (min-width: 768px) {
+  .restaurant-banner {
+    height: 340px;
+  }
+
+  .restaurant-foods {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+}

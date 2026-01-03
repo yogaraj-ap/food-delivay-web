@@ -17,12 +17,15 @@
 // import Address from "./Components/Address";
 // import Payment from "./Components/Payment";
 // import OrderSuccess from "./Components/OrderSuccess";
+// import OrderTracking from "./Components/OrderTracking";
+// import RestaurantPage from "./Components/RestaurantPage";
+
 
 // /* ===== OWNER FLOW ===== */
 // import OwnerAuth from "./Components/OwnerAuth";
 // import OwnerDashboard from "./Components/OwnerDashboard";
 
-// /* ===== PAGE CONSTANTS (IMPORTANT) ===== */
+// /* ===== PAGE CONSTANTS ===== */
 // const PAGES = {
 //   WELCOME: "welcome",
 //   LOGIN: "login",
@@ -38,20 +41,24 @@
 //   NOTIFICATION: "notification",
 
 //   HOME: "home",
+//   RESTAURANT: "restaurant",  
 //   FOOD_DETAILS: "food-details",
 //   CART: "cart",
 //   PROFILE: "profile",
 //   ORDERS: "orders",
+//   TRACK_ORDER: "track-order",
 
 //   ADDRESS: "address",
 //   PAYMENT: "payment",
 //   ORDER_SUCCESS: "order-success",
 // };
 
+
 // function App() {
 //   const [page, setPage] = useState(PAGES.WELCOME);
 //   const [selectedFood, setSelectedFood] = useState(null);
-//   const [cart, setCart] = useState([]);
+//   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
+//   const [selectedOrderId, setSelectedOrderId] = useState(null);
 
 //   console.log("📄 CURRENT PAGE:", page);
 
@@ -77,7 +84,7 @@
 //         <OwnerDashboard setPage={setPage} />
 //       )}
 
-//       {/* ===== LOCATION FLOW ===== */}
+//       {/* ===== LOCATION FLOW (🔥 FIXED) ===== */}
 //       {page === PAGES.LOCATION_ACCURACY && (
 //         <LocationAccuracy setPage={setPage} />
 //       )}
@@ -92,50 +99,65 @@
 
 //       {/* ===== HOME ===== */}
 //       {page === PAGES.HOME && (
-//         <Home
-//           setPage={setPage}
-//           setSelectedFood={setSelectedFood}
-//           cart={cart}
-//         />
-//       )}
+//   <Home
+//     setPage={setPage}
+//     setSelectedFood={setSelectedFood}
+//     setSelectedRestaurant={setSelectedRestaurant} 
+//   />
+// )}
+
+// {page === "restaurant" && selectedRestaurant && (
+//   <RestaurantPage
+//     restaurant={selectedRestaurant}
+//     setPage={setPage}
+//     setSelectedFood={setSelectedFood}
+//   />
+// )}
+
 
 //       {/* ===== FOOD DETAILS ===== */}
-//       {page === PAGES.FOOD_DETAILS && selectedFood ? (
-//         <FoodDetails
-//           food={selectedFood}
-//           setPage={setPage}
-//           cart={cart}
-//           setCart={setCart}
-//         />
-//       ) : (
-//         page === PAGES.FOOD_DETAILS && setPage(PAGES.HOME)
-//       )}
-
-//       {/* ===== CART ===== */}
-//       {page === "cart" && (
-//   <Cart
-//     cart={cart}
-//     setCart={setCart}
+// {page === PAGES.FOOD_DETAILS && selectedFood && (
+//   <FoodDetails
+//     food={selectedFood}
 //     setPage={setPage}
 //   />
 // )}
 
-//       {/* ===== PROFILE & ORDERS ===== */}
+
+//       {/* ===== CART ===== */}
+//       {page === PAGES.CART && (
+//         <Cart setPage={setPage} />
+//       )}
+
+//       {/* ===== PROFILE ===== */}
 //       {page === PAGES.PROFILE && (
 //         <Profile setPage={setPage} />
 //       )}
 
+//       {/* ===== ORDERS ===== */}
 //       {page === PAGES.ORDERS && (
-//         <Orders setPage={setPage} />
+//         <Orders
+//           setPage={setPage}
+//           setSelectedOrderId={setSelectedOrderId}
+//         />
 //       )}
 
-//       {/* ===== CHECKOUT FLOW ===== */}
+//       {/* ===== ORDER TRACKING ===== */}
+//       {page === PAGES.TRACK_ORDER && (
+//         <OrderTracking
+//           orderId={selectedOrderId}
+//           setPage={setPage}
+//         />
+//       )}
+
+//       {/* ===== CHECKOUT ===== */}
 //       {page === PAGES.ADDRESS && (
 //         <Address setPage={setPage} />
 //       )}
 
-//      {page === "payment" && <Payment setPage={setPage} />}
-
+//       {page === PAGES.PAYMENT && (
+//         <Payment setPage={setPage} />
+//       )}
 
 //       {page === PAGES.ORDER_SUCCESS && (
 //         <OrderSuccess setPage={setPage} />
@@ -164,6 +186,7 @@ import Address from "./Components/Address";
 import Payment from "./Components/Payment";
 import OrderSuccess from "./Components/OrderSuccess";
 import OrderTracking from "./Components/OrderTracking";
+import RestaurantPage from "./Components/RestaurantPage";
 
 /* ===== OWNER FLOW ===== */
 import OwnerAuth from "./Components/OwnerAuth";
@@ -185,6 +208,7 @@ const PAGES = {
   NOTIFICATION: "notification",
 
   HOME: "home",
+  RESTAURANT: "restaurant",
   FOOD_DETAILS: "food-details",
   CART: "cart",
   PROFILE: "profile",
@@ -199,99 +223,100 @@ const PAGES = {
 function App() {
   const [page, setPage] = useState(PAGES.WELCOME);
   const [selectedFood, setSelectedFood] = useState(null);
+  const [selectedRestaurant, setSelectedRestaurant] = useState(null);
   const [selectedOrderId, setSelectedOrderId] = useState(null);
 
-  console.log("📄 CURRENT PAGE:", page);
+  /* ===== FULLSCREEN PAGES ===== */
+  const isFullscreen =
+    page === PAGES.WELCOME ||
+    page === PAGES.LOGIN ||
+    page === PAGES.SIGNUP ||
+    page === PAGES.FORGOT ||
+    page === PAGES.LOCATION_ACCURACY ||
+    page === PAGES.LOCATION ||
+    page === PAGES.NOTIFICATION ||
+    page === PAGES.OWNER_LOGIN ||
+    page === PAGES.OWNER_SIGNUP;
 
   return (
     <>
-      {/* ===== WELCOME ===== */}
+      {/* ===== FULLSCREEN SCREENS ===== */}
       {page === PAGES.WELCOME && <Welcome setPage={setPage} />}
 
-      {/* ===== USER AUTH ===== */}
       {(page === PAGES.LOGIN ||
         page === PAGES.SIGNUP ||
         page === PAGES.FORGOT) && (
         <Auth page={page} setPage={setPage} />
       )}
 
-      {/* ===== OWNER AUTH ===== */}
       {(page === PAGES.OWNER_LOGIN ||
         page === PAGES.OWNER_SIGNUP) && (
         <OwnerAuth page={page} setPage={setPage} />
       )}
 
-      {page === PAGES.OWNER_DASHBOARD && (
-        <OwnerDashboard setPage={setPage} />
-      )}
-
-      {/* ===== LOCATION FLOW (🔥 FIXED) ===== */}
       {page === PAGES.LOCATION_ACCURACY && (
         <LocationAccuracy setPage={setPage} />
       )}
 
-      {page === PAGES.LOCATION && (
-        <Location setPage={setPage} />
-      )}
+      {page === PAGES.LOCATION && <Location setPage={setPage} />}
 
       {page === PAGES.NOTIFICATION && (
         <NotificationPermission setPage={setPage} />
       )}
 
-      {/* ===== HOME ===== */}
-      {page === PAGES.HOME && (
-        <Home
-          setPage={setPage}
-          setSelectedFood={setSelectedFood}
-        />
-      )}
+      {/* ===== CONSTRAINED APP PAGES ===== */}
+      {!isFullscreen && (
+        <div className="app-container">
+          {page === PAGES.HOME && (
+            <Home
+              setPage={setPage}
+              setSelectedFood={setSelectedFood}
+              setSelectedRestaurant={setSelectedRestaurant}
+            />
+          )}
 
-      {/* ===== FOOD DETAILS ===== */}
- {page === "food-details" && selectedFood && (
-  <FoodDetails
-    food={selectedFood}
-    setPage={setPage}
-  />
-)}
+          {page === PAGES.RESTAURANT && selectedRestaurant && (
+            <RestaurantPage
+              restaurant={selectedRestaurant}
+              setPage={setPage}
+              setSelectedFood={setSelectedFood}
+            />
+          )}
 
+          {page === PAGES.FOOD_DETAILS && selectedFood && (
+            <FoodDetails food={selectedFood} setPage={setPage} />
+          )}
 
-      {/* ===== CART ===== */}
-      {page === PAGES.CART && (
-        <Cart setPage={setPage} />
-      )}
+          {page === PAGES.CART && <Cart setPage={setPage} />}
 
-      {/* ===== PROFILE ===== */}
-      {page === PAGES.PROFILE && (
-        <Profile setPage={setPage} />
-      )}
+          {page === PAGES.PROFILE && <Profile setPage={setPage} />}
 
-      {/* ===== ORDERS ===== */}
-      {page === PAGES.ORDERS && (
-        <Orders
-          setPage={setPage}
-          setSelectedOrderId={setSelectedOrderId}
-        />
-      )}
+          {page === PAGES.ORDERS && (
+            <Orders
+              setPage={setPage}
+              setSelectedOrderId={setSelectedOrderId}
+            />
+          )}
 
-      {/* ===== ORDER TRACKING ===== */}
-      {page === PAGES.TRACK_ORDER && (
-        <OrderTracking
-          orderId={selectedOrderId}
-          setPage={setPage}
-        />
-      )}
+          {page === PAGES.TRACK_ORDER && (
+            <OrderTracking
+              orderId={selectedOrderId}
+              setPage={setPage}
+            />
+          )}
 
-      {/* ===== CHECKOUT ===== */}
-      {page === PAGES.ADDRESS && (
-        <Address setPage={setPage} />
-      )}
+          {page === PAGES.ADDRESS && <Address setPage={setPage} />}
 
-      {page === PAGES.PAYMENT && (
-        <Payment setPage={setPage} />
-      )}
+          {page === PAGES.PAYMENT && <Payment setPage={setPage} />}
 
-      {page === PAGES.ORDER_SUCCESS && (
-        <OrderSuccess setPage={setPage} />
+          {page === PAGES.ORDER_SUCCESS && (
+            <OrderSuccess setPage={setPage} />
+          )}
+
+          {page === PAGES.OWNER_DASHBOARD && (
+            <OwnerDashboard setPage={setPage} />
+          )}
+        </div>
       )}
     </>
   );

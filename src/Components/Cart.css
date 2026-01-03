@@ -7,12 +7,21 @@
 
 /* ===== HEADER ===== */
 .cart-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
   background: #fff;
-  padding: 14px 16px;
-  font-size: 18px;
-  font-weight: 800;
   border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
+
+.cart-header h3 {
+  margin: 0;
+}
+
 
 /* ===== EMPTY CART ===== */
 .cart-empty {
@@ -194,4 +203,19 @@
     font-size: 16px;
     border-radius: 14px;
   }
+}
+.payment-options {
+  margin: 16px 0;
+}
+
+.payment-options h4 {
+  margin-bottom: 8px;
+}
+
+.payment-options label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+  font-size: 14px;
 }
