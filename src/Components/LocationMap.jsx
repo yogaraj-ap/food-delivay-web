@@ -1,11 +1,14 @@
+
+
+
 import React from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "./LocationMap.css";
 
-/* FIX LEAFLET ICON ISSUE */
 delete L.Icon.Default.prototype._getIconUrl;
+
 L.Icon.Default.mergeOptions({
   iconRetinaUrl:
     "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
@@ -21,14 +24,15 @@ function LocationMap({ lat, lng }) {
   return (
     <div className="location-map">
       <MapContainer
-        center={[lat, lng]}
-        zoom={15}
-        scrollWheelZoom={false}
-        dragging={false}
-        doubleClickZoom={false}
-        zoomControl={false}
-        style={{ height: "160px", width: "100%" }}
-      >
+  center={[lat, lng]}
+  zoom={15}
+  scrollWheelZoom={false}
+  dragging={false}
+  doubleClickZoom={false}
+  zoomControl={false}
+  className="leaflet-container"
+>
+
         <TileLayer
           attribution="© OpenStreetMap"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

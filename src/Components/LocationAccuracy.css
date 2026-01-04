@@ -1,13 +1,13 @@
-/* ===== PAGE ===== */
+
 .accuracy-page {
   position: fixed;
-  inset: 0;                 /* 🔥 TRUE FULL SCREEN */
+  inset: 0;               
   width: 100%;
   height: 100%;
 
   background-image: url("../assets/locationacc.jpg");
   background-repeat: no-repeat;
-  background-size: cover;   /* fills screen correctly */
+  background-size: cover;  
   background-position: center;
   background-color: #f6e8ff;
 
@@ -18,7 +18,7 @@
   font-family: "Segoe UI", sans-serif;
 }
 
-/* ===== CARD ===== */
+
 .accuracy-card {
   width: 100%;
   max-width: 420px;
@@ -32,7 +32,7 @@
   text-align: center;
 }
 
-/* ===== TEXT ===== */
+
 .accuracy-card h3 {
   font-size: 18px;
   margin-bottom: 6px;
@@ -48,7 +48,7 @@
   color: #555;
 }
 
-/* ===== ACTIONS ===== */
+
 .accuracy-actions {
   display: flex;
   flex-direction: column;
@@ -56,7 +56,7 @@
   margin-top: 20px;
 }
 
-/* ===== BUTTONS ===== */
+
 .primary {
   background: #2563eb;
   color: #fff;

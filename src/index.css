@@ -1,102 +1,3 @@
-/* 
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color: #213547;
-  background-color: #ffffff;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-
-html,
-body,
-#root {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-
-body {
-  display: block;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
-
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #535bf2;
-}
-
-
-h1 {
-  font-size: 3rem;
-  line-height: 1.2;
-  margin: 0;
-}
-
-
-button {
-  border-radius: 8px;
-  border: none;
-  padding: 10px 18px;
-  font-size: 1rem;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #ff6f3c;
-  color: #ffffff;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-button:hover {
-  background-color: #ff814f;
-}
-
-button:focus {
-  outline: none;
-} */
-
-
-/*
-  design-upgrade.css
-  A modern, simple & premium responsive stylesheet for your food-delivery app.
-  Purpose: only change look & feel; do NOT change any JS/HTML behavior.
-
-  How to use:
-  - Save as src/styles/design-upgrade.css (or any path you prefer).
-  - Import it after your existing CSS so it can override styles:
-      import './styles/design-upgrade.css';
-    or add <link rel="stylesheet" href="/styles/design-upgrade.css"> to your index.html
-  - This file uses CSS variables at :root for easy color-tweaks.
-
-  Notes:
-  - Mobile-first. Breakpoints at 768px (tablet) and 1200px (desktop).
-  - Targets common classes seen in your project: .home-page, .z-navbar, .hero-map, .restaurant-card, .food-grid, .cart-btn, .profile-btn, .leaflet-container
-  - If your project uses other class names, the patterns here are intentionally generic and should still apply.
-*/
-
-/* ===== GLOBAL LAYOUT LOCK (FINAL FIX) ===== */
 *,
 *::before,
 *::after {
@@ -114,19 +15,10 @@ body,
 }
 
 
-/* Force every page to fill screen */
-#root > * {
+#root {
   width: 100%;
   min-height: 100vh;
   overflow-x: hidden;
-}
-
-/* Kill image & svg overflow */
-img,
-svg,
-iframe,
-.leaflet-container {
-  max-width: 100%;
 }
 
 
@@ -134,8 +26,8 @@ iframe,
   --bg: #f5f6f8;
   --panel: #ffffff;
   --muted: #6b7280;
-  --accent: #0f6cff; /* primary accent */
-  --accent-2: #0266d4; /* deep accent for buttons */
+  --accent: #0f6cff; 
+  --accent-2: #0266d4; 
   --shadow: 0 8px 24px rgba(17,24,39,0.08);
   --soft-shadow: 0 6px 18px rgba(17,24,39,0.06);
   --radius-lg: 14px;
@@ -169,15 +61,13 @@ body {
 }
 
 
-/* Page container */
+
 .app-container, .home-page{
   width:100%;
  
-  
-  padding: 18px 16px 80px; /* leave space at bottom for floating cart */
+  padding: 18px 16px 80px; 
 }
 
-/* NAVBAR */
 .z-navbar{
   display:flex;
   align-items:center;
@@ -197,22 +87,11 @@ body {
   border:1px solid rgba(15,108,255,0.06);
 }
 
-/* HERO MAP */
-.hero-map{
-  margin:12px 0 28px;
-  width:100%;
-  border-radius:var(--radius-md);
-  overflow:hidden;
-  box-shadow:var(--shadow);
-}
-.hero-map .leaflet-container, .map, .hero-map iframe{height:220px;width:100%;display:block}
 
-/* SECTION TITLE */
 .section-title{
   text-align:center;margin:26px 0 18px;font-weight:700;color:var(--accent-2);font-size:20px
 }
 
-/* Restaurants list - single column on mobile and two columns on tablet, cards on desktop */
 .restaurant-list{
   display:grid;
   grid-template-columns: 1fr;
@@ -241,56 +120,39 @@ body {
 .card-desc{color:var(--muted);font-size:14px;margin-top:6px}
 .card-hours{font-size:13px;color:var(--muted);margin-top:auto}
 
-/* Inspiration / Foods grid */
-.food-grid{
-  display:grid;
-  grid-template-columns: repeat(1,1fr);
-  gap:18px;
-  margin-top:8px;
-}
-.food-card{
-  display:flex;align-items:center;gap:12px;background:var(--panel);padding:12px;border-radius:12px;box-shadow:var(--soft-shadow);border:1px solid rgba(11,18,32,0.03)
-}
-.food-card img{width:112px;height:84px;object-fit:cover;border-radius:10px}
+
 .food-info{display:flex;flex-direction:column}
 .food-title{font-weight:700;font-size:16px}
 .food-sub{font-size:13px;color:var(--muted);margin-top:6px}
 
-/* Floating cart button */
 .cart-btn{
   position:fixed;right:20px;bottom:22px;z-index:1200;display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;font-weight:700;box-shadow:0 18px 44px rgba(2,102,212,0.18);
 }
 .cart-btn .count{background:rgba(255,255,255,0.14);padding:6px 8px;border-radius:999px;font-size:13px}
 
-/* MOBILE ACTION BAR (optional fallback for small screens) */
 .mobile-action-bar{position:fixed;left:0;right:0;bottom:0;display:flex;gap:6px;padding:10px;background:linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,255,255,0.95));justify-content:center;box-shadow:0 -8px 30px rgba(9,10,20,0.06);z-index:1100}
 .mobile-action-bar button{flex:1;padding:10px;border-radius:10px;border:1px solid rgba(11,18,32,0.04);background:var(--panel);font-weight:700}
 
-/* Utility: centered column used for large empty spaces (keeps hero centred) */
 .center-col{display:flex;flex-direction:column;align-items:center;justify-content:center}
 
-/* RESPONSIVE: tablet and desktop */
 @media (min-width: 640px){
-  .hero-map .leaflet-container{height:260px}
+
   .restaurant-list{grid-template-columns: repeat(2, minmax(0,1fr));}
   .food-grid{grid-template-columns: repeat(2, minmax(0,1fr));}
 }
 
 @media (min-width: 992px){
   .app-container{padding:28px 20px 110px}
-  .restaurant-list{grid-template-columns: 1fr 380px;} /* left list + right sidebar card */
+  .restaurant-list{grid-template-columns: 1fr 380px;} 
   .restaurant-card{flex-direction:column}
-  .hero-map .leaflet-container{height:320px}
+
   .food-grid{grid-template-columns: repeat(3, minmax(0,1fr));}
 }
 
 
-
-/* Accessibility tweaks */
 button, a{cursor:pointer}
 button:focus, a:focus{outline:3px solid rgba(15,108,255,0.16);outline-offset:2px;border-radius:10px}
 
-/* Small helper classes to tune existing markup without touching HTML */
 .muted{color:var(--muted)}
 .small{font-size:13px}
 .center{text-align:center}
@@ -304,7 +166,6 @@ button:focus, a:focus{outline:3px solid rgba(15,108,255,0.16);outline-offset:2px
   .restaurant-card{border-radius:12px}
 }
 
-/* ===== PAGE ROOTS (NO CENTERING, NO MAX-WIDTH) ===== */
 .welcome-container,
 .auth-page,
 .location-page,
@@ -320,14 +181,10 @@ button:focus, a:focus{outline:3px solid rgba(15,108,255,0.16);outline-offset:2px
 }
 
 
-/* OPTIONAL: subtle loading shimmer for images that might be lazy-loaded */
 .img-shimmer{position:relative;overflow:hidden}
 .img-shimmer::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,0.28),rgba(255,255,255,0));transform:translateX(-100%);animation:shimmer 1.4s infinite}
 @keyframes shimmer{to{transform:translateX(100%)}}
 
-/* End of design-upgrade.css */
-
-/* FORCE TRUE FULLSCREEN PAGES */
 .fullscreen-page {
   position: fixed;
   inset: 0;
@@ -338,3 +195,46 @@ button:focus, a:focus{outline:3px solid rgba(15,108,255,0.16);outline-offset:2px
   padding: 0 !important;
 }
 
+
+.hero-map {
+  height: 240px !important;
+  min-height: 240px !important;
+  max-height: 240px !important;
+  background: transparent;
+}
+
+.hero-map .leaflet-container {
+  height: 100% !important;
+  min-height: 100% !important;
+  max-height: 100% !important;
+}
+
+
+@media (min-width: 768px) {
+  .hero-map {
+    height: 300px !important;
+  }
+}
+
+
+.leaflet-map {
+  width: 100%;
+  height: 100%;               
+}
+
+.leaflet-container {
+  width: 100% !important;
+  height: 100% !important;     
+}
+
+@media (min-width: 640px) {
+  .hero-map {
+    height: 260px;
+  }
+}
+
+@media (min-width: 992px) {
+  .hero-map {
+    height: 320px;
+  }
+}

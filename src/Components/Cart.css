@@ -1,11 +1,11 @@
-/* ===== PAGE ===== */
+
 .cart-page {
   min-height: 100vh;
   background: #f5f5f5;
   padding-bottom: 90px;
 }
 
-/* ===== HEADER ===== */
+
 .cart-header {
   display: flex;
   align-items: center;
@@ -23,7 +23,7 @@
 }
 
 
-/* ===== EMPTY CART ===== */
+
 .cart-empty {
   text-align: center;
   margin-top: 80px;
@@ -34,12 +34,10 @@
   margin-bottom: 10px;
 }
 
-/* ===== CART LIST ===== */
 .cart-list {
   padding: 12px;
 }
 
-/* ===== CART ITEM ===== */
 .cart-item {
   background: #fff;
   border-radius: 14px;
@@ -80,7 +78,7 @@
   margin-top: 4px;
 }
 
-/* ===== REMOVE BUTTON ===== */
+
 .remove-btn {
   background: transparent;
   border: none;
@@ -89,7 +87,7 @@
   color: #ff5252;
 }
 
-/* ===== BILL SUMMARY ===== */
+
 .bill-box {
   background: #fff;
   margin: 12px;
@@ -112,7 +110,7 @@
   margin-top: 10px;
 }
 
-/* ===== CHECKOUT BAR (Mobile) ===== */
+
 .checkout-bar {
   position: fixed;
   bottom: 0;
@@ -147,9 +145,7 @@
   background: #00b248;
 }
 
-/* ========================= */
-/* ===== DESKTOP VIEW ===== */
-/* ========================= */
+
 
 @media (min-width: 768px) {
   .cart-page {

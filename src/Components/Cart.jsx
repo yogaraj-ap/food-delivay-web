@@ -9,10 +9,9 @@ function Cart({ setPage }) {
   const cart = useSelector((state) => state.cart || []);
   const dispatch = useDispatch();
 
-  /* ✅ PAYMENT METHOD */
   const [paymentMethod, setPaymentMethod] = useState("COD");
 
-  /* ================= ADDRESS ================= */
+ 
   const savedAddress = JSON.parse(
     localStorage.getItem("selectedAddress")
   );
@@ -21,7 +20,6 @@ function Cart({ setPage }) {
     ? savedAddress.address
     : null;
 
-  /* ================= TOTALS ================= */
   const itemTotal = cart.reduce(
     (sum, item) => sum + item.price * (item.quantity || 1),
     0
@@ -30,7 +28,6 @@ function Cart({ setPage }) {
   const deliveryFee = cart.length > 0 ? 30 : 0;
   const grandTotal = itemTotal + deliveryFee;
 
-  /* ================= PLACE ORDER ================= */
   const placeOrderHandler = async () => {
     try {
       if (cart.length === 0) {
@@ -57,7 +54,7 @@ function Cart({ setPage }) {
       const payload = {
         email: userEmail,
         ownerEmail,
-        paymentMethod: paymentMethod, // ✅ FIXED
+        paymentMethod: paymentMethod,
         totalAmount: grandTotal,
         deliveryAddress,
         items: cart.map((item) => ({
@@ -91,7 +88,7 @@ function Cart({ setPage }) {
         <h3>Your Cart</h3>
       </div>
 
-      {/* ===== DELIVERY ADDRESS ===== */}
+    
       <div className="delivery-address">
         <strong>Deliver to:</strong>
         <p>{deliveryAddress || "No address selected"}</p>
@@ -106,7 +103,7 @@ function Cart({ setPage }) {
         )}
       </div>
 
-      {/* ===== CART ITEMS ===== */}
+      
       <div className="cart-list">
         {cart.map((item, index) => (
           <div className="cart-item" key={index}>
@@ -132,7 +129,7 @@ function Cart({ setPage }) {
         ))}
       </div>
 
-      {/* ===== BILL ===== */}
+      
       <div className="bill-box">
         <div className="bill-row">
           <span>Item total</span>
@@ -150,7 +147,7 @@ function Cart({ setPage }) {
         </div>
       </div>
 
-      {/* ===== PAYMENT METHOD ===== */}
+     
       <div className="payment-options">
         <h4>Select Payment Method</h4>
 
@@ -173,7 +170,7 @@ function Cart({ setPage }) {
         </label>
       </div>
 
-      {/* ===== CHECKOUT ===== */}
+    
       <div className="checkout-bar">
         <div className="checkout-total">
           ₹{grandTotal}

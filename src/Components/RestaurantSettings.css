@@ -1,4 +1,4 @@
-/* ================= PAGE ================= */
+
 .owner-dashboard {
   padding: 24px;
   max-width: 1000px;
@@ -6,7 +6,6 @@
   font-family: "Segoe UI", sans-serif;
 }
 
-/* ================= OWNER PROFILE ================= */
 .owner-profile {
   display: flex;
   align-items: center;
@@ -51,8 +50,6 @@
   background: #ff5722;
   color: white;
 }
-
-/* ================= PROFILE ACTIONS ================= */
 .owner-actions {
   display: flex;
   gap: 10px;
@@ -86,7 +83,6 @@
   background: #d32f2f;
 }
 
-/* ================= FOOD FORM ================= */
 .food-form {
   background: #ffffff;
   padding: 20px;
@@ -125,7 +121,6 @@
   background: #e64a19;
 }
 
-/* ================= ORDERS ================= */
 .order-card {
   background: #fff;
   border-radius: 12px;
@@ -168,7 +163,6 @@
   color: white;
 }
 
-/* ================= FOOD LIST ================= */
 .food-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -216,7 +210,6 @@
   background: #d32f2f;
 }
 
-/* ================= MODAL (EDIT PROFILE / SETTINGS) ================= */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -272,7 +265,6 @@
   color: white;
 }
 
-/* ================= RESPONSIVE ================= */
 @media (max-width: 600px) {
   .owner-profile {
     flex-direction: column;

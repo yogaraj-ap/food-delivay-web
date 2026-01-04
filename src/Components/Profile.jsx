@@ -2,18 +2,17 @@ import React, { useEffect } from "react";
 import "./Profile.css";
 
 function Profile({ setPage }) {
-  // ✅ Get logged-in user
+
   const userName = localStorage.getItem("userName");
   const userEmail = localStorage.getItem("userEmail");
 
-  /* ================= AUTH GUARD ================= */
   useEffect(() => {
     if (!userEmail) {
-      setPage("welcome"); // 🔐 redirect if not logged in
+      setPage("welcome"); 
     }
   }, [userEmail, setPage]);
 
-  /* ================= LOGOUT ================= */
+
   const logout = () => {
     localStorage.removeItem("userEmail");
     localStorage.removeItem("userName");
@@ -22,14 +21,14 @@ function Profile({ setPage }) {
     setPage("welcome");
   };
 
-  /* ================= AVATAR INITIAL ================= */
+
   const avatarLetter = userName
     ? userName.charAt(0).toUpperCase()
     : "👤";
 
   return (
     <div className="profile-page">
-      {/* ===== HEADER ===== */}
+ 
       <div className="profile-header">
         <button
           className="back-btn"
@@ -40,7 +39,7 @@ function Profile({ setPage }) {
         <h2>My Profile</h2>
       </div>
 
-      {/* ===== USER INFO ===== */}
+  
       <div className="profile-card">
         <div className="avatar-circle">
           {avatarLetter}
@@ -50,7 +49,6 @@ function Profile({ setPage }) {
         <p>{userEmail || "guest@email.com"}</p>
       </div>
 
-      {/* ===== OPTIONS ===== */}
       <div className="profile-options">
         <div
           className="profile-item"
@@ -78,7 +76,6 @@ function Profile({ setPage }) {
         </div>
       </div>
 
-      {/* ===== LOGOUT ===== */}
       <button
         className="logout-btn"
         onClick={logout}

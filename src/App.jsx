@@ -170,8 +170,7 @@
 
 import React, { useState } from "react";
 import "./App.css";
-
-/* ===== USER FLOW ===== */
+//user flow
 import Welcome from "./Components/Welcome";
 import Auth from "./Components/Auth";
 import Location from "./Components/Location";
@@ -187,12 +186,10 @@ import Payment from "./Components/Payment";
 import OrderSuccess from "./Components/OrderSuccess";
 import OrderTracking from "./Components/OrderTracking";
 import RestaurantPage from "./Components/RestaurantPage";
-
-/* ===== OWNER FLOW ===== */
+//owner flow
 import OwnerAuth from "./Components/OwnerAuth";
 import OwnerDashboard from "./Components/OwnerDashboard";
 
-/* ===== PAGE CONSTANTS ===== */
 const PAGES = {
   WELCOME: "welcome",
   LOGIN: "login",
@@ -226,7 +223,6 @@ function App() {
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
   const [selectedOrderId, setSelectedOrderId] = useState(null);
 
-  /* ===== FULLSCREEN PAGES ===== */
   const isFullscreen =
     page === PAGES.WELCOME ||
     page === PAGES.LOGIN ||
@@ -240,7 +236,7 @@ function App() {
 
   return (
     <>
-      {/* ===== FULLSCREEN SCREENS ===== */}
+ 
       {page === PAGES.WELCOME && <Welcome setPage={setPage} />}
 
       {(page === PAGES.LOGIN ||
@@ -264,7 +260,6 @@ function App() {
         <NotificationPermission setPage={setPage} />
       )}
 
-      {/* ===== CONSTRAINED APP PAGES ===== */}
       {!isFullscreen && (
         <div className="app-container">
           {page === PAGES.HOME && (

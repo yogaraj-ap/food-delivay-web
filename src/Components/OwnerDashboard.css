@@ -1,4 +1,4 @@
-/* ===== PAGE ===== */
+/* 
 .owner-dashboard {
   padding: 24px;
   max-width: 900px;
@@ -12,7 +12,6 @@
   color: #ff5722;
 }
 
-/* ================= OWNER PROFILE ================= */
 .owner-profile {
   background: #ffffff;
   border-radius: 14px;
@@ -78,7 +77,6 @@
   background: #d32f2f;
 }
 
-/* ===== FORM ===== */
 .food-form {
   background: #ffffff;
   padding: 20px;
@@ -102,7 +100,6 @@
   border-color: #ff5722;
 }
 
-/* ===== BUTTONS ===== */
 .food-form button {
   grid-column: span 2;
   padding: 14px;
@@ -119,7 +116,6 @@
   background: #e64a19;
 }
 
-/* ===== FOOD LIST ===== */
 .food-list h3 {
   margin-bottom: 15px;
 }
@@ -146,7 +142,7 @@
   font-size: 14px;
 }
 
-/* ===== ACTION BUTTONS ===== */
+
 .food-actions button {
   margin-left: 8px;
   padding: 8px 12px;
@@ -174,7 +170,6 @@
   background: #d32f2f;
 }
 
-/* ===== RESPONSIVE ===== */
 @media (max-width: 600px) {
   .food-form {
     grid-template-columns: 1fr;
@@ -200,5 +195,217 @@
 
   .logout-btn {
     width: 100%;
+  }
+} */
+
+
+.owner-dashboard {
+  padding: 20px;
+  max-width: 980px;
+  margin: auto;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: #f6f7fb;
+}
+
+.owner-dashboard h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ff5722;
+  font-weight: 700;
+}
+
+
+.owner-profile {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  margin-bottom: 28px;
+}
+
+.owner-avatar {
+  font-size: 34px;
+  background: linear-gradient(135deg, #ff7043, #ff5722);
+  color: #fff;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.owner-info {
+  flex: 1;
+}
+
+.owner-info h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
+}
+
+.owner-info p {
+  margin: 4px 0;
+  color: #777;
+  font-size: 14px;
+}
+
+.role-badge {
+  display: inline-block;
+  background: #e3f2fd;
+  color: #1976d2;
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-top: 6px;
+}
+
+.logout-btn {
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.logout-btn:hover {
+  background: #d32f2f;
+}
+
+
+.food-form {
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 32px;
+}
+
+.food-form input {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.food-form input:focus {
+  outline: none;
+  border-color: #ff5722;
+}
+
+
+.food-form button {
+  grid-column: span 2;
+  padding: 14px;
+  background: linear-gradient(135deg, #ff7043, #ff5722);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.food-form button:hover {
+  opacity: 0.9;
+}
+
+.food-list h3 {
+  margin-bottom: 14px;
+  font-size: 18px;
+}
+
+.food-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.food-info h4 {
+  margin: 0 0 4px;
+  color: #222;
+  font-size: 16px;
+}
+
+.food-info p {
+  margin: 2px 0;
+  color: #777;
+  font-size: 13px;
+}
+
+.food-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.food-actions button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.edit-btn {
+  background: #2196f3;
+  color: white;
+}
+
+.edit-btn:hover {
+  background: #1976d2;
+}
+
+.delete-btn {
+  background: #f44336;
+  color: white;
+}
+
+.delete-btn:hover {
+  background: #d32f2f;
+}
+
+
+@media (max-width: 768px) {
+  .owner-profile {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logout-btn {
+    width: 100%;
+  }
+
+  .food-form {
+    grid-template-columns: 1fr;
+  }
+
+  .food-form button {
+    grid-column: span 1;
+  }
+
+  .food-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .food-actions {
+    width: 100%;
+    justify-content: flex-end;
   }
 }

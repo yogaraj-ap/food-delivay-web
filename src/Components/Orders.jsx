@@ -7,7 +7,7 @@ function Orders({ setPage, setSelectedOrderId }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // ✅ Get logged-in user email
+
   const email =
     localStorage.getItem("userEmail") || "test@gmail.com";
 
@@ -24,13 +24,13 @@ function Orders({ setPage, setSelectedOrderId }) {
     }
   };
 
-  // ✅ FIRST LOAD
+
   loadOrders();
 
-  // 🔁 AUTO REFRESH EVERY 5 SECONDS
+
   const interval = setInterval(loadOrders, 5000);
 
-  // 🧹 CLEANUP
+  //  CLEANUP
   return () => clearInterval(interval);
 
 }, [email]);
@@ -55,18 +55,15 @@ function Orders({ setPage, setSelectedOrderId }) {
     <div className="orders-page">
       <h2>📦 Your Orders</h2>
 
-      {/* ===== LOADING ===== */}
+     
       {loading && <p>Loading orders...</p>}
 
-      {/* ===== ERROR ===== */}
       {error && <p className="error-text">{error}</p>}
 
-      {/* ===== EMPTY ===== */}
       {!loading && orders.length === 0 && (
         <p>No orders found 🛒</p>
       )}
 
-      {/* ===== ORDER LIST ===== */}
       {orders.map((order) => (
         <div className="order-card" key={order.id}>
           <div>
@@ -87,7 +84,6 @@ function Orders({ setPage, setSelectedOrderId }) {
               : ""}
           </div>
 
-          {/* 🔥 TRACK ORDER */}
           <button
             className="track-btn"
             onClick={() => {
@@ -100,7 +96,6 @@ function Orders({ setPage, setSelectedOrderId }) {
         </div>
       ))}
 
-      {/* ===== BACK ===== */}
       <button
         className="back-btn"
         onClick={() => setPage("home")}

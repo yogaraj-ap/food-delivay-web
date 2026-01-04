@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/cartSlice";
@@ -7,29 +8,22 @@ import { getRestaurantByOwner } from "../Service/Api";
 
 function FoodDetails({ food, setPage }) {
   const dispatch = useDispatch();
-
-  /* ================= RESTAURANT STATE ================= */
   const [restaurant, setRestaurant] = useState(null);
 
-  /* ===== SAFETY CHECK ===== */
   useEffect(() => {
-    if (!food) {
-      setPage("home");
-    }
+    if (!food) setPage("home");
   }, [food, setPage]);
 
   if (!food) return null;
 
-  /* ================= LOAD RESTAURANT ================= */
   useEffect(() => {
     if (food?.ownerEmail) {
       getRestaurantByOwner(food.ownerEmail)
         .then((res) => setRestaurant(res.data))
-        .catch(() => console.log("Restaurant not found"));
+        .catch(() => {});
     }
   }, [food]);
 
-  /* ===== ADD TO CART ===== */
   const addItem = () => {
     dispatch(
       addToCart({
@@ -45,78 +39,62 @@ function FoodDetails({ food, setPage }) {
   };
 
   return (
-    <div className="food-details">
+    <div className="food-details-page">
+  
+      <button className="back-btn" onClick={() => setPage("home")}>
+        ← Back
+      </button>
 
-      {/* ================= HEADER (BACK BUTTON) ================= */}
-      <div className="food-header">
-        <button
-          className="back-btn"
-          onClick={() => setPage("home")}
-        >
-          ← Back
-        </button>
+      <div className="food-cover">
+        <img
+          src={
+            food.imageUrl?.startsWith("http")
+              ? food.imageUrl
+              : food.imageUrl
+              ? `http://localhost:8080/${food.imageUrl}`
+              : foodPlaceholder
+          }
+          alt={food.name}
+          onError={(e) => (e.target.src = foodPlaceholder)}
+        />
       </div>
 
-      {/* ================= RESTAURANT BANNER ================= */}
-      {restaurant && restaurant.bannerImageUrl && (
-        <div className="restaurant-banner">
-          <img
-            src={restaurant.bannerImageUrl}
-            alt={restaurant.name}
-            onError={(e) =>
-              (e.target.src =
-                "https://via.placeholder.com/600x300?text=Restaurant")
-            }
-          />
+      
+      <div className="food-card">
 
-          <div className="restaurant-info">
-            <h2>{restaurant.name}</h2>
-            {restaurant.cuisine && <p>{restaurant.cuisine}</p>}
-            {restaurant.address && <p>{restaurant.address}</p>}
-            {restaurant.openTime && (
-              <span>{restaurant.openTime}</span>
-            )}
-          </div>
-        </div>
-      )}
+        
+        <div className="restaurant-info">
+          <h2>{food.name}</h2>
 
-      {/* ================= FOOD IMAGE ================= */}
-      <img
-        src={food.imageUrl || food.image || foodPlaceholder}
-        alt={food.name}
-        onError={(e) => (e.target.src = foodPlaceholder)}
-        className="food-details-image"
-      />
-
-      {/* ================= FOOD INFO ================= */}
-      <div className="food-details-content">
-        <h2 className="food-title">{food.name}</h2>
-
-        <p className="food-restaurant">
-          {food.restaurantName}
-        </p>
-
-        {food.category && (
-          <span className="food-category">
-            {food.category}
-          </span>
-        )}
-
-        <p className="food-rating">
-          ⭐ {(food.rating || 4.2).toFixed(1)}
-        </p>
-
-        {food.description && (
-          <p className="food-description">
-            {food.description}
+          <p className="restaurant-name">
+            {restaurant?.name || food.restaurantName}
+            {restaurant?.cuisine && ` • ${restaurant.cuisine}`}
           </p>
+
+          {restaurant && (
+            <p className="restaurant-meta">
+              {restaurant.address}
+              {restaurant.openTime && ` • ${restaurant.openTime}`}
+            </p>
+          )}
+        </div>
+
+     
+        <div className="price-rating">
+          <span className="price">₹{food.price}</span>
+          <span className="rating">
+            ⭐ {(food.rating || 4.2).toFixed(1)}
+          </span>
+        </div>
+
+   
+        {food.description && (
+          <p className="description">{food.description}</p>
         )}
 
-        <h3 className="food-price">₹{food.price}</h3>
-
-        {/* ================= ACTIONS ================= */}
-        <div className="food-actions">
-          <button className="add-cart-btn" onClick={addItem}>
+      
+        <div className="actions">
+          <button className="add-btn" onClick={addItem}>
             Add to Cart
           </button>
 

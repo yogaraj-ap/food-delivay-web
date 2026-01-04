@@ -96,11 +96,11 @@ import "./Payment.css";
 function Payment({ setPage }) {
   const dispatch = useDispatch();
 
-  // ✅ PAYMENT METHOD STATE
+  //  PAYMENT METHOD STATE
   const [method, setMethod] = useState("COD");
 
   const confirmPayment = () => {
-    // ✅ SAVE METHOD (OPTIONAL – FOR ORDER SUCCESS / HISTORY)
+    //  SAVE METHOD (OPTIONAL – FOR ORDER SUCCESS / HISTORY)
     localStorage.setItem("paymentMethod", method);
 
     if (method === "COD") {
@@ -109,10 +109,10 @@ function Payment({ setPage }) {
       toast.success("UPI Payment Successful 💳");
     }
 
-    // ✅ CLEAR CART
+    //  CLEAR CART
     dispatch(clearCart());
 
-    // ✅ REDIRECT
+    //  REDIRECT
     setTimeout(() => {
       setPage("order-success");
     }, 1200);
@@ -122,7 +122,6 @@ function Payment({ setPage }) {
     <div className="payment-page">
       <h2>Choose Payment Method</h2>
 
-      {/* ===== PAYMENT OPTIONS ===== */}
       <div className="payment-options">
         <button
           className={method === "UPI" ? "active" : ""}
@@ -139,7 +138,6 @@ function Payment({ setPage }) {
         </button>
       </div>
 
-      {/* ===== INFO TEXT ===== */}
       {method === "COD" ? (
         <p className="payment-info">
           Pay cash when your food arrives
@@ -150,12 +148,10 @@ function Payment({ setPage }) {
         </p>
       )}
 
-      {/* ===== CONFIRM BUTTON ===== */}
       <button className="pay-btn" onClick={confirmPayment}>
         {method === "COD" ? "Confirm Order" : "Pay Now"}
       </button>
 
-      {/* ===== BACK ===== */}
       <button
         className="back-btn"
         onClick={() => setPage("cart")}

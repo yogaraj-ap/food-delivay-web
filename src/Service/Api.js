@@ -83,13 +83,13 @@
 
 import axios from "axios";
 
-/* ================= AXIOS INSTANCE ================= */
+
 const API = axios.create({
   baseURL: "http://localhost:8080/api",
-  timeout: 15000, // ✅ prevents silent failures on uploads
+  timeout: 15000, 
 });
 
-/* ================= AUTH ================= */
+
 
 // CUSTOMER SIGNUP
 export const signupUser = (data) =>
@@ -110,7 +110,7 @@ export const loginOwner = (data) =>
 export const forgotPassword = (data) =>
   API.post("/auth/forgot-password", data);
 
-/* ================= LOCATION ================= */
+
 
 // SAVE LOCATION PERMISSION
 export const saveLocationPermission = (data) =>
@@ -137,12 +137,11 @@ export const reverseGeocode = (lat, lon) =>
 export const getLocationStatus = () =>
   API.get("/location/status");
 
-/* ================= NOTIFICATION ================= */
+
 
 export const saveNotificationPermission = (data) =>
   API.post("/notification/permission", data);
 
-/* ================= ORDERS ================= */
 
 // PLACE ORDER
 export const placeOrder = (data) =>
@@ -162,7 +161,7 @@ export const getNewOwnerOrders = (ownerEmail) =>
     params: { ownerEmail },
   });
 
-// ✅ UPDATE ORDER STATUS (FIXED)
+//  UPDATE ORDER STATUS (FIXED)
 export const updateOrderStatus = (orderId, status) =>
   API.put(`/orders/${orderId}/status?status=${status}`);
 
@@ -174,7 +173,6 @@ export const getOrderById = (orderId) =>
 export const updateOrderLocation = (orderId, lat, lng) =>
   API.put(`/orders/${orderId}/location`, { lat, lng });
 
-/* ================= FOODS ================= */
 
 export const addFood = (foodFormData) =>
   API.post("/foods", foodFormData);
@@ -195,15 +193,12 @@ export const updateFood = (id, food) =>
 export const deleteFood = (id) =>
   API.delete(`/foods/${id}`);
 
-
-/* ================= ADDRESSES ================= */
-
 export const saveAddress = (data) =>
   API.post("/addresses", data);
 
 export const getAddresses = (email) =>
   API.get(`/addresses/${email}`);
-/* ================= RESTAURANT ================= */
+
 
 export const saveRestaurant = (formData) =>
   API.post("/restaurant/save", formData);

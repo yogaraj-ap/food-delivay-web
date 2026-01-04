@@ -1,66 +1,3 @@
-// import React from "react";
-// import "./Address.css";
-
-// const addresses = [
-//   {
-//     id: 1,
-//     type: "Home",
-//     address: "12, Anna Nagar, Chennai - 600040",
-//   },
-//   {
-//     id: 2,
-//     type: "Work",
-//     address: "IT Park Road, Tidel Park, Chennai - 600113",
-//   },
-// ];
-
-// function Address({ setPage }) {
-//   return (
-//     <div className="address-page">
-//       {/* HEADER */}
-//       <div className="address-header">
-//         <button className="back-btn" onClick={() => setPage("profile")}>
-//           ← Back
-//         </button>
-//         <h2>Saved Addresses</h2>
-//       </div>
-
-//       {/* ADDRESS LIST */}
-//       {addresses.length === 0 ? (
-//         <div className="empty-address">
-//           <p>No saved addresses 📍</p>
-//           <button onClick={() => setPage("location")}>
-//             Add New Address
-//           </button>
-//         </div>
-//       ) : (
-//         <div className="address-list">
-//           {addresses.map((addr) => (
-//             <div key={addr.id} className="address-card">
-//               <div className="address-type">{addr.type}</div>
-//               <p>{addr.address}</p>
-//               <div className="address-actions">
-//                 <button>Edit</button>
-//                 <button className="delete">Delete</button>
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-//       )}
-
-//       {/* ADD ADDRESS */}
-//       <button
-//         className="add-address-btn"
-//         onClick={() => setPage("location")}
-//       >
-//         + Add New Address
-//       </button>
-//     </div>
-//   );
-// }
-
-// export default Address;
-
 import React, { useState } from "react";
 import "./Address.css";
 
@@ -84,7 +21,7 @@ function Address({ setPage }) {
       })
     );
 
-    setPage("home"); // ✅ GO BACK
+    setPage("home");
   };
 
   const deleteAddress = () => {
@@ -95,7 +32,9 @@ function Address({ setPage }) {
   return (
     <div className="address-page">
       <h2>Saved Address</h2>
-
+         <button className="back-btn" onClick={() => setPage("home")}>
+        ← Back
+      </button>
       <textarea
         placeholder="Enter delivery address"
         value={address}

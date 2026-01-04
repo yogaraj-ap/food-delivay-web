@@ -1,4 +1,4 @@
-/* ===== FULLSCREEN RESET ===== */
+
 html,
 body,
 #root {
@@ -7,10 +7,10 @@ body,
   margin: 0;
 }
 
-/* ===== AUTH PAGE ===== */
+
 .auth-container {
   position: fixed;
-  inset: 0;                 /* FULL SCREEN */
+  inset: 0;               
   width: 100vw;
   height: 100vh;
 
@@ -20,14 +20,14 @@ body,
   background-position: center;
 
   display: flex;
-  justify-content: center;  /* ✅ CENTER HORIZONTALLY */
-  align-items: center;      /* ✅ CENTER VERTICALLY */
+  justify-content: center;  
+  align-items: center;     
 
   font-family: "Segoe UI", sans-serif;
   overflow: hidden;
 }
 
-/* ===== BACKGROUND OVERLAY ===== */
+
 .auth-container::before {
   content: "";
   position: absolute;
@@ -36,7 +36,7 @@ body,
   z-index: 0;
 }
 
-/* ===== AUTH CARD ===== */
+
 .auth-box {
   width: 420px;
   max-width: calc(100% - 32px);
@@ -54,7 +54,7 @@ body,
   animation: fadeUp 0.6s ease;
 }
 
-/* ===== TITLE ===== */
+
 .auth-box h2 {
   margin-bottom: 26px;
   color: #ff6f3c;
@@ -62,7 +62,7 @@ body,
   font-weight: 700;
 }
 
-/* ===== INPUT ===== */
+
 .auth-input {
   width: 100%;
   padding: 14px 16px;
@@ -78,7 +78,7 @@ body,
   border-color: #ff6f3c;
 }
 
-/* ===== BUTTON ===== */
+
 .auth-btn {
   width: 100%;
   padding: 14px;
@@ -99,7 +99,7 @@ body,
   background-color: #ff814f;
 }
 
-/* ===== LINKS ===== */
+
 .auth-links {
   margin-top: 16px;
   font-size: 14px;
@@ -112,7 +112,7 @@ body,
   margin-top: 8px;
 }
 
-/* ===== ANIMATION ===== */
+
 @keyframes fadeUp {
   from {
     opacity: 0;

@@ -1,11 +1,11 @@
-/* ===== PAGE ===== */
+
 .profile-page {
   min-height: 100vh;
   background: #f9fafb;
   font-family: "Segoe UI", sans-serif;
 }
 
-/* ===== HEADER ===== */
+
 .profile-header {
   display: flex;
   align-items: center;
@@ -29,7 +29,6 @@
   color: #ff6f00;
 }
 
-/* ===== PROFILE CARD ===== */
 .profile-card {
   background: #ffffff;
   margin: 16px;
@@ -62,7 +61,6 @@
   font-size: 14px;
 }
 
-/* ===== OPTIONS ===== */
 .profile-options {
   margin: 16px;
   background: #ffffff;
@@ -89,7 +87,6 @@
   background: #fff3e0;
 }
 
-/* ===== LOGOUT ===== */
 .logout-btn {
   width: calc(100% - 32px);
   margin: 20px 16px;

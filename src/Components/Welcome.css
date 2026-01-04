@@ -129,7 +129,6 @@ body {
 } */
 
 
-/* RESET */
 html,
 body {
   width: 100%;
@@ -137,10 +136,9 @@ body {
 
 }
 
-/* ================= MAIN CONTAINER ================= */
 .welcome-container {
   position: fixed;
-  inset: 0;                 /* top:0 right:0 bottom:0 left:0 */
+  inset: 0;                 
   width: 100%;
   height: 100%;
 
@@ -157,9 +155,6 @@ body {
   z-index: 9999;
 }
 
-
-
-/* DARK OVERLAY */
 .welcome-container::before {
   content: "";
   position: absolute;
@@ -172,7 +167,6 @@ body {
   z-index: 0;
 }
 
-/* ================= CARD ================= */
 .welcome-container > * {
   position: relative;
   z-index: 1;
@@ -190,7 +184,6 @@ body {
   box-shadow: 0 30px 70px rgba(0, 0, 0, 0.25);
 }
 
-/* ================= LOGO ================= */
 .welcome-logo {
   width: 110px;
   height: 110px;
@@ -198,7 +191,6 @@ body {
   margin-bottom: 18px;
 }
 
-/* ================= TEXT ================= */
 .welcome-title {
   font-size: 26px;
   font-weight: 800;
@@ -212,7 +204,6 @@ body {
   margin-bottom: 26px;
 }
 
-/* ================= BUTTONS ================= */
 .welcome-buttons {
   display: flex;
   flex-direction: column;
@@ -238,7 +229,6 @@ body {
   box-shadow: 0 10px 24px rgba(255, 111, 60, 0.35);
 }
 
-/* ================= OWNER SECTION ================= */
 .owner-section {
   margin-top: 24px;
   padding-top: 18px;
@@ -261,7 +251,6 @@ body {
   cursor: pointer;
 }
 
-/* ================= RESPONSIVE ================= */
 @media (max-width: 480px) {
   .welcome-card {
     padding: 26px 20px;

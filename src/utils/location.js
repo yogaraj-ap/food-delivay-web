@@ -18,7 +18,7 @@ export const formatAddress = (data) => {
 
   const address = data.address;
 
-  // Priority: city → town → village → state
+ 
   return (
     address.city ||
     address.town ||

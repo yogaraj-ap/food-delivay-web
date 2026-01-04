@@ -262,10 +262,9 @@ import OrderCard from "./OrderCard";
 import OwnerEditProfile from "./OwnerEditProfile";
 
 function OwnerDashboard() {
-  /* ===== OWNER INFO ===== */
+
   const ownerEmail = localStorage.getItem("ownerEmail");
 
-  /* ===== OWNER PROFILE ===== */
   const [showEditProfile, setShowEditProfile] = useState(false);
 
   const ownerProfile = {
@@ -274,8 +273,6 @@ function OwnerDashboard() {
     phone: localStorage.getItem("ownerPhone") || "",
     restaurant: localStorage.getItem("restaurantName") || "",
   };
-
-  /* ================= RESTAURANT STATE ================= */
 const [restaurant, setRestaurant] = useState({
   name: ownerProfile.restaurant || "",
   cuisine: "",
@@ -300,8 +297,6 @@ const [bannerPreview, setBannerPreview] = useState(null); // 👁 ADD HERE
   />
 )}
 
-
-  /* ================= FOOD STATES ================= */
   const [foods, setFoods] = useState([]);
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -312,10 +307,8 @@ const [bannerPreview, setBannerPreview] = useState(null); // 👁 ADD HERE
   );
   const [imageFile, setImageFile] = useState(null);
 
-  /* ================= ORDER STATES ================= */
   const [orders, setOrders] = useState([]);
 
-  /* ================= LOAD DATA ================= */
   const loadFoods = async () => {
     try {
       const res = await getOwnerFoods(ownerEmail);
@@ -347,7 +340,6 @@ const [bannerPreview, setBannerPreview] = useState(null); // 👁 ADD HERE
     return () => clearInterval(interval);
   }, [ownerEmail]);
 
-  /* ================= SAVE RESTAURANT ================= */
   const saveRestaurantHandler = async () => {
   try {
     const formData = new FormData();
@@ -371,9 +363,6 @@ const [bannerPreview, setBannerPreview] = useState(null); // 👁 ADD HERE
   }
 };
 
-
-
-  /* ================= ADD FOOD ================= */
   const addFoodHandler = async () => {
     if (!name || !price || !restaurantName || !imageFile) {
       toast.error("All food fields required");
@@ -403,7 +392,6 @@ const [bannerPreview, setBannerPreview] = useState(null); // 👁 ADD HERE
     }
   };
 
-  /* ================= DELETE FOOD ================= */
   const deleteFoodHandler = async (id) => {
     if (!window.confirm("Delete this food?")) return;
 
@@ -416,7 +404,6 @@ const [bannerPreview, setBannerPreview] = useState(null); // 👁 ADD HERE
     }
   };
 
-  /* ================= ORDER STATUS ================= */
   const changeStatus = async (orderId, status) => {
     try {
       await updateOrderStatus(orderId, status);
@@ -426,8 +413,6 @@ const [bannerPreview, setBannerPreview] = useState(null); // 👁 ADD HERE
       toast.error("Failed to update status");
     }
   };
-
-  /* ================= LOGOUT ================= */
   const logoutOwner = () => {
     localStorage.clear();
     window.location.reload();
@@ -437,7 +422,6 @@ const [bannerPreview, setBannerPreview] = useState(null); // 👁 ADD HERE
     <div className="owner-dashboard">
       <h2>🍴 Owner Dashboard</h2>
 
-      {/* ================= OWNER PROFILE ================= */}
       <div className="owner-profile">
         <div className="owner-avatar">👨‍🍳</div>
 
@@ -455,7 +439,6 @@ const [bannerPreview, setBannerPreview] = useState(null); // 👁 ADD HERE
         </div>
       </div>
 
-      {/* ================= RESTAURANT DETAILS (ZOMATO STYLE) ================= */}
       <h3>🏠 Restaurant Details</h3>
 
       <div className="food-form">
@@ -517,7 +500,6 @@ const [bannerPreview, setBannerPreview] = useState(null); // 👁 ADD HERE
 
       <hr />
 
-      {/* ================= ADD FOOD ================= */}
       <h3>Add Food</h3>
 
       <div className="food-form">
@@ -561,7 +543,6 @@ const [bannerPreview, setBannerPreview] = useState(null); // 👁 ADD HERE
 
       <hr />
 
-      {/* ================= OWNER ORDERS ================= */}
       <h3>🛎️ New Orders</h3>
 
       {orders.length === 0 && <p>No new orders</p>}
@@ -576,7 +557,6 @@ const [bannerPreview, setBannerPreview] = useState(null); // 👁 ADD HERE
 
       <hr />
 
-      {/* ================= FOOD LIST ================= */}
       <h3>Your Foods</h3>
 
       {foods.length === 0 && <p>No foods added yet</p>}
@@ -595,8 +575,7 @@ const [bannerPreview, setBannerPreview] = useState(null); // 👁 ADD HERE
           </div>
         ))}
       </div>
-
-      {/* ================= EDIT PROFILE MODAL ================= */}
+      
       {showEditProfile && (
         <OwnerEditProfile
           owner={ownerProfile}

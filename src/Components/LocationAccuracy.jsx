@@ -21,13 +21,12 @@ function LocationAccuracy({ setPage }) {
 
       toast.success("Location enabled 📍");
 
-      // ✅ ALWAYS MOVE FORWARD
+      
       setTimeout(() => setPage("location"), 1000);
     },
     async (error) => {
       console.error("❌ Location error:", error);
 
-      // 🔥 IMPORTANT: Timeout should NOT block app
       if (error.code === 3) {
         toast.warning("Using approximate location");
         setTimeout(() => setPage("location"), 1000);
@@ -39,9 +38,9 @@ function LocationAccuracy({ setPage }) {
       setTimeout(() => setPage("notification"), 1000);
     },
     {
-      enableHighAccuracy: false, // 🔴 MUST BE FALSE
-      timeout: 30000,            // 30 seconds
-      maximumAge: 60000,         // allow cached location
+      enableHighAccuracy: false, 
+      timeout: 30000,           
+      maximumAge: 60000,       
     }
   );
 };

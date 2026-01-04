@@ -1,9 +1,4 @@
-/* src/DesignSystem.css
-   Minimal, premium, responsive UI for your food app.
-   Import this AFTER your other css files (in main.jsx).
-*/
 
-/* Theme */
 :root{
   --bg: #f6f7fb;
   --panel: #ffffff;
@@ -16,7 +11,7 @@
 
 }
 
-/* Reset + base */
+
 *{box-sizing:border-box}
 html,
 body,
@@ -25,7 +20,7 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* 🔥 this stops right-side space permanently */
+  overflow-x: hidden; 
 }
 
 body {
@@ -49,7 +44,6 @@ body {
 a,button{cursor:pointer}
 img{display:block;}
 
-/* Page container */
 .app,
 .app-container,
 .home-page {
@@ -60,7 +54,6 @@ img{display:block;}
 }
 
 
-/* NAVBAR */
 .z-navbar {
   display:flex;
   align-items:center;
@@ -74,22 +67,12 @@ img{display:block;}
   box-shadow:var(--shadow-sm);
 }
 
-/* Tabs and filters */
 .z-tabs { margin:16px 0 6px; }
 .z-tabs .active { font-weight:700; color:var(--accent-2); padding-bottom:6px; border-bottom:3px solid rgba(2,102,212,0.08); }
 .z-filters { display:flex; gap:10px; margin:10px 0 20px; flex-wrap:wrap; }
 .z-filters button { background:var(--panel); padding:10px 12px; border-radius:10px; border:1px solid rgba(11,18,32,0.04); box-shadow:var(--shadow-sm); }
 
-/* HERO MAP */
-.hero-map {
-  border-radius:var(--radius-lg);
-  overflow:hidden;
-  box-shadow:var(--shadow-lg);
-  margin-bottom:22px;
-}
-.hero-map .leaflet-container, .hero-map iframe { height:220px; width:100%; display:block; }
 
-/* SECTION TITLE */
 .section-title {
   text-align:center;
   font-weight:700;
@@ -98,7 +81,6 @@ img{display:block;}
   font-size:20px;
 }
 
-/* GRID: Restaurants (uses FoodCard) */
 .restaurant-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -106,37 +88,21 @@ img{display:block;}
   margin-bottom: 28px;
 }
 .restaurant-grid,
+
 .food-grid {
-  width: 100%;
+  align-items: start;             
 }
 
-
-/* GRID: Generic food grid (for allFoods) */
-.food-grid {
-  display:grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
-  gap: 18px;
-  margin-bottom: 28px;
-}
-
-/* FoodCard base (works for both foods & restaurants) */
 .food-card {
-  display:flex;
-  flex-direction:column;
-  background:var(--panel);
-  border-radius:14px;
-  overflow:hidden;
-  box-shadow:var(--shadow-sm);
-  transition: transform .22s ease, box-shadow .22s ease;
-  cursor:pointer;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
+
+
+
 .food-card:hover { transform: translateY(-6px); box-shadow:var(--shadow-lg); }
 
-/* image wrapper for consistent crop */
-.food-image-wrapper { width:100%; height:150px; overflow:hidden; background:#f2f4f7; display:block; }
-.food-image { width:100%; height:100%; object-fit:cover; display:block; }
-
-/* content */
 .food-content { padding:14px 16px; display:flex; flex-direction:column; gap:8px; }
 .food-title { font-size:16px; font-weight:800; color:#0b1220; margin:0; }
 .food-subtitle { font-size:13px; color:var(--muted); margin:0; }
@@ -145,7 +111,7 @@ img{display:block;}
 .food-price { font-weight:800; color:var(--accent); }
 .food-rating { font-weight:700; font-size:13px; color:#222; }
 
-/* Skeleton placeholders */
+
 .skeleton-card {
   height:220px;
   background:linear-gradient(90deg,#f3f5f8,#eef1f6,#f3f5f8);
@@ -153,7 +119,6 @@ img{display:block;}
   box-shadow:var(--shadow-sm);
 }
 
-/* CART SUMMARY (bottom bar) */
 .cart-summary {
   position:fixed; right:18px; bottom:18px; z-index:1200;
   display:flex; gap:12px; align-items:center; padding:12px 16px; border-radius:999px;
@@ -163,10 +128,9 @@ img{display:block;}
 .cart-summary .cart-left { color: #fff; }
 .cart-summary .cart-right { color:#fff; text-decoration:underline; }
 
-/* FOOTER */
 .site-footer { margin-top:36px; padding:18px 0; border-top:1px solid rgba(11,18,32,0.04); color:var(--muted); font-size:14px; }
 
-/* WELCOME / HERO PAGE */
+
 .welcome-hero {
   width:100%; height: 80vh; min-height:520px; display:flex; align-items:center; justify-content:center;
   background: linear-gradient(0deg, rgba(10,10,12,0.35), rgba(10,10,12,0.35)), url('/src/assets/hero-bg.png');
@@ -179,25 +143,49 @@ img{display:block;}
 .welcome-actions { display:flex; gap:14px; justify-content:center; margin-top:12px; flex-wrap:wrap; }
 .welcome-btn { background:#fff; color:var(--accent-2); padding:12px 26px; border-radius:999px; font-weight:700; border:none; box-shadow:var(--shadow-sm); }
 
-/* Responsive */
 @media (min-width:640px) {
-  .hero-map .leaflet-container { height:280px; }
+
   .food-image-wrapper { height:170px; }
 }
 @media (min-width:992px) {
-  .hero-map .leaflet-container { height:340px; }
+
   .food-image-wrapper { height:200px; }
   .welcome-title { font-size:48px; }
 }
 
-/* small helpers */
 .center{text-align:center}
 .muted{color:var(--muted)}
 
 .hero-map {
-  width: 100%;
-  max-width: none;
-  margin-left: 0;
-  margin-right: 0;
+  height: 240px !important;
+  min-height: 240px !important;
+  max-height: 240px !important;
+  background: transparent;
+}
+
+.hero-map .leaflet-container {
+  height: 100% !important;
+  min-height: 100% !important;
+  max-height: 100% !important;
+}
+
+@media (min-width: 768px) {
+  .hero-map {
+    height: 300px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .food-image-wrapper {
+    height: 140px;
+  }
+
+  .food-grid {
+    row-gap: 22px;
+  }
+
+  .food-content {
+    padding: 10px 12px;
+  }
 }
 

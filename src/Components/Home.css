@@ -1,6 +1,4 @@
 
-
-/* ===== ROOT SAFETY ===== */
 html, body, #root {
   width: 100%;
   margin: 0;
@@ -8,22 +6,23 @@ html, body, #root {
   overflow-x: hidden;
 }
 
-/* ===== PAGE WRAPPER ===== */
 .home-wrapper {
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
 }
 
+.home-section {
+  padding: 16px;
+}
 .restaurant-card img {
   width: 100%;
   height: 180px;
-  object-fit: contain;          /* 🔥 FULL IMAGE */
+  object-fit: contain;          
   background: #f3f5f8;
 }
 
 
-/* ===== PAGE ===== */
 .home-page {
   width: 100%;
   min-height: 100vh;
@@ -38,7 +37,6 @@ html, body, #root {
 }
 
 
-/* ===== NAVBAR ===== */
 .z-navbar {
   width: 100%;
   background: #fff;
@@ -52,7 +50,8 @@ html, body, #root {
   z-index: 100;
 }
 
-/* LEFT */
+
+
 .nav-left {
   display: flex;
   align-items: center;
@@ -61,7 +60,7 @@ html, body, #root {
   min-width: 0;
 }
 
-/* LOCATION */
+
 .nav-location {
   max-width: 200px;
   white-space: nowrap;
@@ -70,7 +69,8 @@ html, body, #root {
   font-size: 13px;
 }
 
-/* SEARCH */
+
+
 .nav-search {
   flex: 1;
   max-width: 360px;
@@ -82,20 +82,78 @@ html, body, #root {
   border: 1px solid #ddd;
 }
 
-/* RIGHT */
+
 .nav-right {
   display: flex;
+  align-items: center;
   gap: 12px;
 }
 
-/* ===== TABS ===== */
+.nav-right button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: all 0.25s ease;
+}
+
+
+.nav-right button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+}
+
+
+.nav-right button:first-child {
+  position: relative;
+}
+
+.nav-right button:first-child::after {
+  content: attr(data-count);
+}
+
+
+.nav-right button:first-child span {
+  background: #2563eb;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+
+.nav-right button:last-child {
+  background: linear-gradient(135deg, #f9fafb, #ffffff);
+}
+
+
+@media (max-width: 640px) {
+  .nav-right button {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+}
+
+
 .z-tabs {
   width: 100%;
   padding: 14px 16px;
   background: #fff;
 }
 
-/* ===== FILTERS ===== */
 .z-filters {
   display: flex;
   gap: 10px;
@@ -107,32 +165,23 @@ html, body, #root {
   white-space: nowrap;
 }
 
-/* ===== MAP ===== */
-.hero-map {
-  width: 100%;
-  margin: 12px 0 28px;
-  border-radius: 12px;
-  overflow: hidden;
-}
 
-/* 🔥 CRITICAL FIX FOR LEAFLET */
-.hero-map *,
-.leaflet-container {
+
+ .hero-map *, */
+ .leaflet-container {
   max-width: 100% !important;
 }
 
-/* ===== GRID ===== */
-.food-grid,
+
+
 .restaurant-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 16px;
   padding: 12px 16px;
-  align-items: stretch;   /* 🔥 IMPORTANT */
-}
+  align-items: stretch;   
+} */
 
-
-/* ===== CART BAR ===== */
 .cart-summary {
   position: fixed;
   bottom: 0;
@@ -146,9 +195,137 @@ html, body, #root {
   z-index: 999;
 }
 
-/* ===== DESKTOP ===== */
 @media (min-width: 768px) {
   .food-grid {
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   }
 }
+
+
+.home-section {
+  padding: 16px;
+}
+
+
+.section-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #1c1c1c;
+}
+
+.restaurant-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+
+.horizontal-scroll {
+  display: flex;
+  gap: 14px;
+  overflow-x: unset;
+  padding-bottom: 8px;
+  scroll-behavior: smooth;
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.horizontal-scroll > * {
+  min-width: 180px;
+  flex-shrink: 0;
+}
+
+
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  column-gap: 28px;         
+  row-gap: 42px;            
+}
+
+
+
+
+.hero-map {
+  width: 100%;
+  height: 220px;          
+  margin: 16px 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #f2f4f7;   
+}
+
+
+
+.leaflet-container {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+
+.food-card img,
+.restaurant-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  background: #f3f5f8;
+}
+
+@media (max-width: 600px) {
+  .hero-map {
+    height: 180px;
+  }
+
+  .horizontal-scroll > * {
+    min-width: 160px;
+  }
+
+  .section-title {
+    font-size: 16px;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .food-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+
+  .restaurant-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+}
+
+
+
+
+.home-section {
+  margin: 36px 0;
+}
+
+.horizontal-scroll {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  width: 100%;
+  overflow: visible;       
+}
+
+
+.horizontal-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+.horizontal-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.15);
+  border-radius: 6px;
+}
+
+.horizontal-scroll .food-card {
+  min-width: 220px;
+  scroll-snap-align: start;
+}
+

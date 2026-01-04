@@ -12,7 +12,7 @@ function OwnerAuth({ page, setPage }) {
     try {
       let res;
 
-      /* ===== OWNER SIGNUP ===== */
+     
       if (page === "owner-signup") {
         if (!email || !password || !name) {
           toast.error("All fields required");
@@ -29,7 +29,7 @@ function OwnerAuth({ page, setPage }) {
         }
       }
 
-      /* ===== OWNER LOGIN ===== */
+      
       if (page === "owner-login") {
         if (!email || !password) {
           toast.error("Email & password required");
@@ -39,7 +39,7 @@ function OwnerAuth({ page, setPage }) {
         res = await loginOwner({ email, password });
 
         if (res.data.success && res.data.role === "OWNER") {
-          // ✅ SAVE OWNER INFO (VERY IMPORTANT)
+       
           localStorage.setItem("ownerEmail", email);
           localStorage.setItem("ownerRole", "OWNER");
 

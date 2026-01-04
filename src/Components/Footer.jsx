@@ -6,7 +6,7 @@ function Footer() {
     <footer className="footer">
       <div className="footer-top">
 
-        {/* ===== BRAND ===== */}
+       
         <div className="footer-brand">
           <div className="brand-logo">
             <span>F</span>
@@ -26,7 +26,7 @@ function Footer() {
           </div>
         </div>
 
-        {/* ===== COMPANY ===== */}
+     
         <div className="footer-column">
           <h4>Company</h4>
           <a>About Us</a>
@@ -35,7 +35,7 @@ function Footer() {
           <a>Blog</a>
         </div>
 
-        {/* ===== SUPPORT ===== */}
+      
         <div className="footer-column">
           <h4>Support</h4>
           <a>Help Center</a>
@@ -44,7 +44,7 @@ function Footer() {
           <a>Safety</a>
         </div>
 
-        {/* ===== PARTNER ===== */}
+    
         <div className="footer-column">
           <h4>Partner</h4>
           <a>Add Restaurant</a>
@@ -54,7 +54,6 @@ function Footer() {
         </div>
       </div>
 
-      {/* ===== BOTTOM ===== */}
       <div className="footer-bottom">
         <span>© 2025 Moms Food. All rights reserved.</span>
 

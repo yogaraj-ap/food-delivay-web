@@ -11,7 +11,6 @@ function RestaurantPage({ restaurant, setPage, setSelectedFood }) {
   const [restaurantInfo, setRestaurantInfo] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  /* ================= LOAD RESTAURANT + FOODS ================= */
   useEffect(() => {
     if (!restaurant) return;
 
@@ -41,7 +40,7 @@ function RestaurantPage({ restaurant, setPage, setSelectedFood }) {
 
   return (
     <div className="restaurant-page">
-      {/* ================= BANNER ================= */}
+ 
       <div
         className="restaurant-banner"
         style={{
@@ -56,7 +55,6 @@ function RestaurantPage({ restaurant, setPage, setSelectedFood }) {
         </button>
       </div>
 
-      {/* ================= RESTAURANT INFO ================= */}
       <div className="restaurant-info">
         <h2 className="restaurant-name">{restaurant.name}</h2>
 
@@ -73,28 +71,30 @@ function RestaurantPage({ restaurant, setPage, setSelectedFood }) {
         )}
       </div>
 
-      {/* ================= FOOD LIST ================= */}
-      <div className="restaurant-foods">
-        {loading && <p>Loading foods...</p>}
+    
+      <div className="restaurant-food-section">
+        {loading && <p className="empty-text">Loading foods...</p>}
 
         {!loading && foods.length === 0 && (
-          <p>No foods added yet 🍽️</p>
+          <p className="empty-text">No foods added yet 🍽️</p>
         )}
 
-        {foods.map((food) => (
-          <FoodCard
-            key={food.id}
-            food={{
-              ...food,
-              image: food.imageUrl,
-              restaurant: food.restaurantName,
-            }}
-            onClick={() => {
-              setSelectedFood(food);
-              setPage("food-details");
-            }}
-          />
-        ))}
+        <div className="restaurant-foods">
+          {foods.map((food) => (
+            <FoodCard
+              key={food.id}
+              food={{
+                ...food,
+                image: food.imageUrl,
+                restaurant: food.restaurantName,
+              }}
+              onClick={() => {
+                setSelectedFood(food);
+                setPage("food-details");
+              }}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

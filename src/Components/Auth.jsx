@@ -13,7 +13,7 @@ function Auth({ page, setPage }) {
     try {
       let res;
 
-      /* ========= CUSTOMER LOGIN ========= */
+      // CUSTOMER LOGIN  
       if (page === "login") {
         if (!email.trim() || !password.trim()) {
           toast.error("Email and password required");
@@ -46,7 +46,7 @@ function Auth({ page, setPage }) {
         }
       }
 
-      /* ========= CUSTOMER SIGNUP ========= */
+     // CUSTOMER SIGNUP
       else if (page === "signup") {
         if (!email.trim() || !password.trim()) {
           toast.error("Email and password required");
@@ -69,7 +69,7 @@ function Auth({ page, setPage }) {
         }
       }
 
-      /* ========= FORGOT PASSWORD ========= */
+     // FORGOT PASSWORD
       else if (page === "forgot") {
         if (!email.trim()) {
           toast.error("Email required");
